@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>System Login</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+    color: #fff;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+.login-container {
+    background: rgba(40,60,70,0.95);
+    padding: 40px;
+    border-radius: 20px;
+    width: 350px;
+    text-align:center;
+    box-shadow: 0 0 20px rgba(0,199,255,0.4);
+}
+input, select {
+    width: 80%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 10px;
+    border: none;
+}
+button {
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    background: #00c7ff;
+    color: #000;
+}
+#error {
+    color: #ff6b6b;
+    margin-top: 10px;
+}
+</style>
+</head>
+<body>
+
+<div class="login-container">
+  <h2>System Login</h2>
+
+  <select id="role">
+    <option value="">Select Role</option>
+    <option value="admin">Admin</option>
+    <option value="client">Client</option>
+  </select>
+
+  <input type="password" id="password" placeholder="Enter Password">
+  <button onclick="login()">Login</button>
+
+  <p id="error"></p>
+</div>
+
+<script>
+// Define passwords (for demo purposes)
+const credentials = {
+    admin: "admin123",
+    client: "client123"
+};
+
+// Login function
+function login() {
+    const role = document.getElementById("role").value;
+    const password = document.getElementById("password").value;
+    const errorEl = document.getElementById("error");
+
+    if (!role) {
+        errorEl.textContent = "Please select a role!";
+        return;
+    }
+
+    if (password === credentials[role]) {
+        // Redirect to specific page based on role
+        switch(role) {
+            case "admin":
+                window.location.href = "dashboard.html";
+                break;
+        
+            case "client":
+                window.location.href = "room.html";
+                break;
+        }
+    } else {
+        errorEl.textContent = "Invalid password!";
+    }
+}
+</script>
+
+</body>
+</html>

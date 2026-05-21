@@ -1,0 +1,823 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Hotel Payroll System</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+/* WEB3 THEME OVERRIDES */
+body {
+  background: radial-gradient(circle at top, #020617, #000);
+}
+
+/* Sidebar upgrade */
+.sidebar {
+  background: linear-gradient(180deg, #020617, #020617);
+  border-right: 1px solid rgba(0, 255, 255, 0.15);
+}
+
+/* Crypto Ad */
+.crypto-ad {
+  position: relative;
+  margin-top: 30px;
+  border-radius: 16px;
+  overflow: hidden;
+  height: 180px;
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 0 30px rgba(0,255,255,0.15);
+}
+
+.crypto-ad video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.7);
+}
+
+.ad-overlay {
+  position: absolute;
+  inset: 0;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  background: linear-gradient(
+    to top,
+    rgba(2,6,23,0.9),
+    transparent
+  );
+}
+
+.ad-overlay h4 {
+  color: #67e8f9;
+  font-size: 14px;
+  text-transform: uppercase;
+}
+
+.ad-overlay p {
+  font-size: 12px;
+  color: #e5e7eb;
+  margin: 4px 0 10px;
+}
+
+.ad-overlay button {
+  background: linear-gradient(90deg, #22d3ee, #3b82f6);
+  border: none;
+  color: black;
+  font-weight: 600;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.ad-overlay button:hover {
+  box-shadow: 0 0 20px #22d3ee;
+}
+.crypto-ad.animated {
+  background: linear-gradient(
+    120deg,
+    #020617,
+    #0ea5e9,
+    #020617
+  );
+  background-size: 300% 300%;
+  animation: glow 6s ease infinite;
+}
+
+@keyframes glow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.crypto-widget {
+  margin-top: 30px;
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(16px);
+  border-radius: 18px;
+  padding: 20px;
+  box-shadow: 0 0 40px rgba(0,255,255,0.12);
+  border: 1px solid rgba(0,255,255,0.15);
+}
+
+.crypto-widget h2 {
+  color: #67e8f9;
+  margin-bottom: 15px;
+}
+
+.prices {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px,1fr));
+  gap: 15px;
+}
+
+.price-card {
+  background: rgba(2,6,23,0.9);
+  border-radius: 14px;
+  padding: 15px;
+  text-align: center;
+  transition: transform 0.3s;
+}
+
+.price-card:hover {
+  transform: translateY(-5px);
+}
+
+.price-card h4 {
+  color: #e5e7eb;
+  font-size: 14px;
+}
+
+.price-card p {
+  font-size: 18px;
+  font-weight: bold;
+  color: #22d3ee;
+}
+.crypto-widget {
+  margin-top: 30px;
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(16px);
+  border-radius: 18px;
+  padding: 20px;
+  box-shadow: 0 0 40px rgba(0,255,255,0.12);
+  border: 1px solid rgba(0,255,255,0.15);
+}
+
+.crypto-widget h2 {
+  color: #67e8f9;
+  margin-bottom: 15px;
+}
+
+.prices {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px,1fr));
+  gap: 15px;
+}
+
+.price-card {
+  background: rgba(2,6,23,0.9);
+  border-radius: 14px;
+  padding: 15px;
+  text-align: center;
+  transition: transform 0.3s;
+}
+
+.price-card:hover {
+  transform: translateY(-5px);
+}
+
+.price-card h4 {
+  color: #e5e7eb;
+  font-size: 14px;
+}
+
+.price-card p {
+  font-size: 18px;
+  font-weight: bold;
+  color: #22d3ee;
+}
+.ad-rotation {
+  margin-top: 25px;
+  border-radius: 18px;
+  overflow: hidden;
+  background: rgba(255,255,255,0.06);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 0 30px rgba(59,130,246,0.25);
+}
+
+.ad-rotation img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+}
+
+.ad-info {
+  padding: 12px;
+}
+
+.ad-info h4 {
+  color: #67e8f9;
+  font-size: 14px;
+}
+
+.ad-info p {
+  font-size: 12px;
+  color: #e5e7eb;
+  margin: 6px 0;
+}
+
+.ad-info a {
+  display: inline-block;
+  background: linear-gradient(90deg,#22d3ee,#3b82f6);
+  color: black;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 12px;
+  text-decoration: none;
+}
+<----Navigation---->
+body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 220px;
+      height: 100%;
+      background-color: #2c3e50;
+      padding-top: 20px;
+      overflow-y: auto;
+    }
+
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .sidebar ul li a {
+      display: block;
+      color: white;
+      padding: 12px 20px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .sidebar ul li a:hover,
+    .sidebar ul li a.active {
+      background-color: #1abc9c;
+    }
+
+    .sidebar ul li ul {
+      display: none;
+      list-style: none;
+      padding-left: 20px;
+    }
+
+    .sidebar ul li:hover > ul {
+      display: block;
+    }
+
+    /* Main content */
+    .main-content {
+      margin-left: 220px;
+      padding: 20px;
+    }
+
+    /* Form styling */
+    input[type="text"],
+    input[type="number"],
+    input[type="date"],
+    textarea,
+    input[type="file"] {
+      width: 100%;
+      padding: 6px 8px;
+      margin: 4px 0 12px 0;
+      box-sizing: border-box;
+    }
+
+    label {
+      font-weight: bold;
+      display: block;
+      margin-top: 10px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 15px;
+    }
+
+    table, th, td {
+      border: 1px solid #ccc;
+    }
+
+    th, td {
+      padding: 6px 10px;
+      text-align: left;
+    }
+
+    button {
+      background-color: #1abc9c;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      cursor: pointer;
+      margin-top: 15px;
+    }
+
+    button:hover {
+      background-color: #16a085;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .sidebar {
+        position: relative;
+        width: 100%;
+        height: auto;
+      }
+
+      .main-content {
+        margin-left: 0;
+      }
+    }
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f6f9;
+}
+
+/* NAVBAR */
+.navbar {
+    background: #0f2027;
+    color: white;
+    padding: 15px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar a {
+    color: white;
+    margin-left: 20px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.navbar a:hover {
+    color: #00c6ff;
+}
+
+/* CONTAINER */
+.container {
+    max-width: 900px;
+    margin: 40px auto;
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+input, select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+}
+
+button {
+    margin-top: 15px;
+    padding: 10px;
+    width: 100%;
+    background: #0a7cff;
+    color: white;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #055fd1;
+}
+
+.result {
+    margin-top: 20px;
+    background: #eef3ff;
+    padding: 15px;
+    border-radius: 6px;
+}
+
+/* TABLE */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+th, td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: center;
+}
+
+th {
+    background: #0f2027;
+    color: white;
+}
+
+/* PRINT */
+@media print {
+    body * { visibility: hidden; }
+    .container, .container * { visibility: visible; }
+    .container { position: absolute; top: 0; left: 0; width: 100%; }
+}
+/* Crypto Ads Slider */
+  .crypto-ads-container {
+    background: #111827;
+    color: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 40px;
+    overflow: hidden;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .crypto-ads-slider {
+    display: flex;
+    animation: slide 10s linear infinite;
+  }
+
+  .crypto-ad {
+    min-width: 100%;
+    text-align: center;
+    font-weight: bold;
+    font-size: 18px;
+    color: #0d6efd;
+    padding: 10px 0;
+  }
+
+  @keyframes slide {
+    0% { transform: translateX(0%); }
+    20% { transform: translateX(0%); }
+    25% { transform: translateX(-100%); }
+    45% { transform: translateX(-100%); }
+    50% { transform: translateX(-200%); }
+    70% { transform: translateX(-200%); }
+    75% { transform: translateX(-300%); }
+    95% { transform: translateX(-300%); }
+    100% { transform: translateX(0%); }
+  }
+
+</style>
+</head>
+
+ 
+
+<body>
+
+<!-- NAVIGATION -->
+<header>
+<nav id="namenu" class="sidebar">
+  <ul>
+    <li>
+        <a href="accountant.html" class="active">Dashboard</a>
+    </li>
+    <li>
+        <a href="index.html">Focused Group discussions</a>
+    </li>
+    <li>
+         <a href="second page.html">Facilty Assessment Questionnare</a>
+    </li>
+    <li>
+         <a href="services.html">Online training allowance Allocations</a>
+    </li>
+    <li>
+         <a href="starter page.html">⛑ Review of Budget Allocations</a>
+    </li>
+    <li class="dropdown">
+       <a href="#">More pages</a>
+   <ul>
+      <li>
+         <a href="fourth page.html">Online training allowance Allocations</a>
+      </li>
+     <li>
+        <a href="index.html">README.TXT</a>
+     </li>
+     <li>
+        <a href="appointment.html">Meet & Engage</a>
+     </li>
+     <li>
+        <a href="experience.html">Experience</a>
+     </li>
+     <li>
+        <a href="room.html">Check Availability</a>
+    </li>
+    </ul>
+  </li>
+<li>
+      <a href="frontpage.html">Contact</a>
+    </li>
+  </ul>
+<div class="crypto-ad">
+  <video autoplay muted loop playsinline>
+    <source src="crypto-ad.mp4" type="video/mp4">
+  </video>
+
+  <div class="ad-overlay">
+    <h4>Trade Crypto Smarter</h4>
+    <p>AI Signals • Low Fees • Web3 Ready</p>
+    <button>Start Trading</button>
+  </div>
+</div>
+ <!-- RIGHT -->
+  <aside class="right">
+    <div class="notice">
+      <h3>Premium Plan</h3>
+      <strong>$30</strong>
+      <p style="color:var(--muted)">Per month</p>
+    </div>
+
+    <div class="list">
+      <div>🔔 5 new users registered</div>
+      <div>📦 12 orders placed</div>
+      <div>💬 3 unread messages</div>
+      <div>📈 Revenue increased</div>
+    </div>
+  </aside>
+</div>
+
+</nav> 
+<div class="main-content">
+<div class="container" id="weekly">
+
+      <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
+        <!-- Uncomment the line below if you also wish to use an image logo -->
+         <img src="assets/img/logo.webp" alt="">
+        <h1 class="sitename">Medi<span>Nest</span></h1>
+      </a>
+
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="frontpage.html">Home</a></li>
+          <li><a href="frontpage.html">About</a></li>
+          <li><a href="frontpage.html">Departments</a></li>
+          <li><a href="frontpage.html">Services</a></li>
+          <li><a href="frontpage.html" class="active">Doctors</a></li>
+          <li class="dropdown"><a href="#"><span>More Pages</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+              <li><a href="frontpage.html">Front Office</a></li>
+              <li><a href="frontpage.html">HouseKeping</a></li>
+              <li><a href="room.html">Appointment</a></li>
+              <li><a href="testimonials.html">Testimonials</a></li>
+              <li><a href="frontpage.html">Frequently Asked Questions</a></li>
+              <li><a href="gallery.html">Gallery</a></li>
+              <li><a href="terms.html">kitchen</a></li>
+              <li><a href="privacy.html">Security</a></li>
+              <li><a href="frontpage.html">Maintenance</a></li>
+              <li><a href="404.html">404</a></li>
+            </ul>
+          </li>
+          <li class="dropdown"><a href="#"><span>Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+              <li><a href="#">Dropdown 1</a></li>
+              <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+                <ul>
+                  <li><a href="#">Deep Dropdown 1</a></li>
+                  <li><a href="#">Deep Dropdown 2</a></li>
+                  <li><a href="#">Deep Dropdown 3</a></li>
+                  <li><a href="#">Deep Dropdown 4</a></li>
+                  <li><a href="#">Deep Dropdown 5</a></li>
+                </ul>
+              </li>
+              <li><a href="#">Dropdown 2</a></li>
+              <li><a href="#">Dropdown 3</a></li>
+              <li><a href="#">Dropdown 4</a></li>
+            </ul>
+          </li>
+          <li><a href="frontpage.html">Contact</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+
+      <a class="btn-getstarted" href="frontpage.html">Apointment</a>
+
+    </div>
+   </header>
+</div>
+
+
+<!-- DAILY WAGES -->
+<div class="main-content">
+<div class="container" id="monthly">
+<h2>Hotel Wage Calculator</h2>
+
+<label>Employee Name</label>
+<input type="text" id="name">
+
+<label>Time In</label>
+<input type="time" id="timeIn">
+
+<label>Time Out</label>
+<input type="time" id="timeOut">
+
+<label>Hourly Rate (KES)</label>
+<input type="number" id="rate" value="300">
+
+<button onclick="calculateWages()">Calculate Wages</button>
+
+<div class="result" id="output"></div>
+</div>
+
+
+<!-- MONTHLY PAYROLL -->
+<div class="container" id="monthly">
+<h2>Monthly Payroll Summary</h2>
+
+<!-- Table -->
+    <section class="table-section">
+      <h2>Recent Submissions</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Message</th>
+            <th>Date</th>
+          </tr>
+        </thead>
+        <tbody id="dataTable"></tbody>
+
+      </table>
+    </section>
+
+<form id="myForm">
+  <input type="text" id="name" placeholder="Name" required />
+  <input type="email" id="email" placeholder="Email" required />
+  <textarea id="message" placeholder="Message"></textarea>
+  <button type="submit">Submit</button>
+</form>
+
+<script>
+const scriptURL = "https://script.google.com/macros/s/AKfycbzhHTP-fFy64C0bGDEt8fgW1ZuFYww1qiwZsST53zsE-aCNxTiDdjZmF5u_3mPUOqOj/exec";
+
+document.getElementById("myForm").addEventListener("submit", e => {
+  e.preventDefault();
+
+  fetch(scriptURL, {
+    method: "POST",
+    body: JSON.stringify({
+      name: name.value,
+      email: email.value,
+      message: message.value
+    })
+  })
+  .then(res => res.json())
+  .then(data => alert("Data saved!"))
+  .catch(err => console.error(err));
+});
+</script>
+<script>
+
+    document.getElementById("output").innerHTML = `
+        <strong>Hours Worked:</strong> ${hours.toFixed(2)}<br>
+        <strong>Overtime:</strong> ${overtime.toFixed(2)} hrs<br>
+        <strong>Night Bonus:</strong> KES ${nightBonus}<br><hr>
+        <strong>Total Pay:</strong>
+        <span style="color:green;">KES ${totalPay.toFixed(2)}</span>
+    `;
+
+    loadMonthly();
+    loadFromSheets();
+}
+
+function loadMonthly() {
+    let payroll = JSON.parse(localStorage.getItem("payroll")) || [];
+    let total = 0;
+
+    let html = `<table>
+        <tr>
+            <th>Date</th><th>Emp ID</th><th>Name</th>
+            <th>Dept</th><th>Total Pay</th>
+        </tr>`;
+
+    payroll.forEach(p => {
+        total += p.totalPay;
+        html += `
+        <tr>
+            <td>${p.date}</td>
+            <td>${p.empId}</td>
+            <td>${p.empName}</td>
+            <td>${p.department}</td>
+            <td>KES ${p.totalPay.toFixed(2)}</td>
+        </tr>`;
+    });
+
+    html += `</table><br><strong>Total Payroll: KES ${total.toFixed(2)}</strong>`;
+    document.getElementById("summary").innerHTML = html;
+}
+</script
+
+ <div class="container" id="yearly"> 
+ <h3>Payroll Records</h3>
+ <section><button onclick="openGoogleSheet()">View New And Old Records</button>
+
+    <table id="sheetTable"></table></section>
+    
+   </div>
+</div>
+
+
+<script>
+const SHEET_API_URL =
+"https://script.google.com/macros/s/AKfycbz-q6bO45-kwM0bhwt8jRbtqE7XnM2OXAIp6IH_LGED2o4LZaQMZdlyCrgb_zpx8DC6LQ/exec";
+
+const GOOGLE_SHEET_URL =
+"https://docs.google.com/spreadsheets/d/1wyUpWvArdNJnbw_8Yhqv7-QSYAuH5XxK5bjKGJ6dR_M/edit";
+
+function openGoogleSheet() {
+  window.open(GOOGLE_SHEET_URL, "_blank");
+}
+
+function loadFromSheets() {
+  fetch(SHEET_API_URL)
+    .then(res => res.json())
+    .then(data => {
+      let table = "<tr>";
+      data[0].forEach(h => table += `<th>${h}</th>`);
+      table += "</tr>";
+
+      for (let i = 1; i < data.length; i++) {
+        table += "<tr>";
+        data[i].forEach(cell => table += `<td>${cell}</td>`);
+        table += "</tr>";
+      }
+
+      document.getElementById("sheetTable").innerHTML = table;
+    })
+    .catch(err => {
+      console.error(err);
+      document.getElementById("sheetTable").innerHTML =
+        "<tr><td colspan='10'>Failed to load Google Sheets data</td></tr>";
+    });
+}
+
+window.onload = loadFromSheets;
+</script>
+
+<script>
+function calculateWages() {
+
+    const timeIn = document.getElementById("timeIn").value;
+    const timeOut = document.getElementById("timeOut").value;
+    const rate = parseFloat(document.getElementById("rate").value);
+
+    if (!timeIn || !timeOut) {
+        alert("Please enter Time In and Time Out");
+        return;
+    }
+
+    const start = new Date("1970-01-01T" + timeIn + ":00");
+    const end = new Date("1970-01-01T" + timeOut + ":00");
+
+    let hoursWorked = (end - start) / (1000 * 60 * 60);
+
+    if (hoursWorked < 0) {
+        hoursWorked += 24; // overnight shift
+    }
+
+    const normalHours = 8;
+    let overtimeHours = 0;
+
+    if (hoursWorked > normalHours) {
+        overtimeHours = hoursWorked - normalHours;
+        hoursWorked = normalHours;
+    }
+
+    const normalPay = hoursWorked * rate;
+    const overtimePay = overtimeHours * (rate * 1.5);
+    const totalPay = normalPay + overtimePay;
+
+    document.getElementById("output").innerHTML = `
+        <strong>Total Hours:</strong> ${ (hoursWorked + overtimeHours).toFixed(2) } hrs<br>
+        <strong>Normal Hours:</strong> ${ hoursWorked.toFixed(2) } hrs<br>
+        <strong>Overtime:</strong> ${ overtimeHours.toFixed(2) } hrs<br><br>
+        <strong>Normal Pay:</strong> KES ${ normalPay.toFixed(2) }<br>
+        <strong>Overtime Pay:</strong> KES ${ overtimePay.toFixed(2) }<br>
+        <hr>
+        <strong>Total Wages:</strong> <span style="color:green;">KES ${ totalPay.toFixed(2) }</span>
+    `;
+}
+</script>
+
+  
+<!-- Crypto Ads Section -->
+<div class="main-content">
+<div class="crypto-ads-container">
+  <div class="crypto-ads-slider">
+    <div class="crypto-ad">🚀 Bitcoin - Trade Now</div>
+    <div class="crypto-ad">🔥 Ethereum - Invest Smart</div>
+    <div class="crypto-ad">🌐 Solana - Fast & Secure</div>
+    <div class="crypto-ad">💎 Cardano - Future of Finance</div>
+    <div class="crypto-ad">📈 Polkadot - Stake & Earn</div>
+    </div>
+   </div>
+</div>
+
+</body>
+</html>

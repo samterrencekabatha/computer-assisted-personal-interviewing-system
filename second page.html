@@ -1,0 +1,1474 @@
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Index - MediNest Bootstrap Template</title>
+
+  </head><body>&lt;<style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 290px;
+      height: 100%;
+      background-color: #2c3e50;
+      padding-top: 20px;
+      overflow-y: auto;
+    }
+
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .sidebar ul li a {
+      display: block;
+      color: white;
+      padding: 12px 20px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .sidebar ul li a:hover,
+    .sidebar ul li a.active {
+      background-color: #1abc9c;
+    }
+
+    .sidebar ul li ul {
+      display: none;
+      list-style: none;
+      padding-left: 20px;
+    }
+
+    .sidebar ul li:hover > ul {
+      display: block;
+    }
+
+    /* Main content */
+    .main-content {
+      margin-left: 300px;
+      padding: 20px;
+    }
+
+    /* Form styling */
+    input[type="text"],
+    input[type="number"],
+    input[type="date"],
+    textarea,
+    input[type="file"] {
+      width: 100%;
+      padding: 6px 8px;
+      margin: 4px 0 12px 0;
+      box-sizing: border-box;
+    }
+
+    label {
+      font-weight: bold;
+      display: block;
+      margin-top: 10px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 15px;
+    }
+
+    table, th, td {
+      border: 1px solid #ccc;
+    }
+
+    th, td {
+      padding: 6px 10px;
+      text-align: left;
+    }
+
+    button {
+      background-color: #1abc9c;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      cursor: pointer;
+      margin-top: 15px;
+    }
+
+    button:hover {
+      background-color: #16a085;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .sidebar {
+        position: relative;
+        width: 100%;
+        height: auto;
+      }
+
+      .main-content {
+        margin-left: 0;
+      }
+    }
+@keyframes glow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}/* Crypto Ad */
+.crypto-ad {
+  position: relative;
+  margin-top: 30px;
+  border-radius: 16px;
+  overflow: hidden;
+  height: 180px;
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 0 30px rgba(0,255,255,0.15);
+}
+
+.crypto-ad video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.7);
+}
+
+.ad-overlay {
+  position: absolute;
+  inset: 0;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  background: linear-gradient(
+    to top,
+    rgba(2,6,23,0.9),
+    transparent
+  );
+}
+
+.ad-overlay h4 {
+  color: #67e8f9;
+  font-size: 14px;
+  text-transform: uppercase;
+}
+
+.ad-overlay p {
+  font-size: 12px;
+  color: #e5e7eb;
+  margin: 4px 0 10px;
+}
+
+.ad-overlay button {
+  background: linear-gradient(90deg, #22d3ee, #3b82f6);
+  border: none;
+  color: black;
+  font-weight: 600;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.ad-overlay button:hover {
+  box-shadow: 0 0 20px #22d3ee;
+}
+.crypto-ad.animated {
+  background: linear-gradient(
+    120deg,
+    #020617,
+    #0ea5e9,
+    #020617
+  );
+  background-size: 300% 300%;
+  animation: glow 6s ease infinite;
+}
+.crypto-widget {
+  margin-top: 30px;
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(16px);
+  border-radius: 18px;
+  padding: 20px;
+  box-shadow: 0 0 40px rgba(0,255,255,0.12);
+  border: 1px solid rgba(0,255,255,0.15);
+}
+
+.crypto-widget h2 {
+  color: #67e8f9;
+  margin-bottom: 15px;
+}
+/* Crypto Ads Slider */
+  .crypto-ads-container {
+    background: #111827;
+    color: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 40px;
+    overflow: hidden;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .crypto-ads-slider {
+    display: flex;
+    animation: slide 10s linear infinite;
+  }
+
+  .crypto-ad {
+    min-width: 100%;
+    text-align: center;
+    font-weight: bold;
+    font-size: 18px;
+    color: #0d6efd;
+    padding: 10px 0;
+  }
+
+    </style>
+
+
+
+  <!-- Sidebar -->
+ <nav id="namenu" class="sidebar">
+  <ul>
+    <li>
+        <a href="#" class="active">Dashboard</a>
+    </li>
+    <li>
+        <a href="starter page.html">⛑ Review of Budget Allocations</a>
+    </li>
+    <li>
+         <a href="third page.html">Focused Group Discussions</a>
+    </li>
+    <li>
+         <a href="accountant.html">⛑ Wage Calculator</a>
+    </li>
+    <li class="dropdown">
+       <a href="#">More pages</a>
+   <ul>
+      <li>
+         <a href="fourth page.html">Online Training Allowance Allocations</a>
+      </li>
+     <li>
+        <a href="index.html">README.TXT</a>
+     </li>
+     <li>
+        <a href="appointment.html">Meet &amp; Engage</a>
+     </li>
+     <li>
+        <a href="experience.html">Experience</a>
+     </li>
+     <li>
+        <a href="room.html">Check Availability</a>
+    </li>
+    </ul>
+  </li>
+<li>
+      <a href="404.html">Contact</a>
+    </li>
+  </ul>
+             <div class="crypto-ad">
+  <video autoplay="" muted="" loop="" playsinline="">
+    <source src="crypto-ad.mp4" type="video/mp4">
+  </video>
+
+  <div class="ad-overlay">
+    <h4>Trade Crypto Smarter</h4>
+    <p>AI Signals • Low Fees • Web3 Ready</p>
+    <button>Start Trading</button>
+  </div>
+</div>
+    <div class="ai-voice-system">
+
+  <h2>🎤 COMPUTER ASSISTED PERSONAL INTERVIEWING SYSTEM</h2>
+
+  <p>
+    This system can read questions aloud and capture spoken responses automatically.
+  </p>
+
+  <div class="ai-controls">
+
+    <button class="read-btn" onclick="readCurrentQuestion()">
+      🔊 Read Question
+    </button>
+
+    <button class="listen-btn" onclick="startInterviewVoice()">
+      🎙 Start Voice Input
+    </button>
+
+    <button class="stop-btn" onclick="stopInterviewVoice()">
+      ⛔ Stop
+    </button>
+
+  </div>
+
+  <div class="ai-progress">
+    <div class="ai-progress-fill" id="aiProgressFill" style="width: 12%;"></div>
+  </div>
+
+  <div class="ai-stats">
+
+    <div class="ai-stat">
+      Answered
+      <strong id="answeredFields">9</strong>
+    </div>
+
+    <div class="ai-stat">
+      Unanswered
+      <strong id="unansweredFields">64</strong>
+    </div>
+
+    <div class="ai-stat">
+      Completion
+      <strong id="completionRate">12%</strong>
+    </div>
+
+  </div>
+
+  <div class="ai-status" id="voiceInterviewStatus">✅ AI Voice Interview System Ready</div>
+
+  <div class="ai-warning" id="missingQuestionsAlert" style="display: block;">⚠ Missing responses detected in field(s): <strong>1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 13, 14, 15, 16, 17, 18, 19, 20, 22, 23, 25, 26, 28, 30, 32, 34, 35, 36, 37, 38, 39, 40, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73</strong></div>
+
+</div>
+</nav><br><br>
+  
+
+
+
+ <div class="main-content">
+<div class="container">
+    <h2>Project Form 2</h2>
+    <h3>Health Facility Assessment Questionnaire</h3>
+    <p>This questionnaire is to be administered to the facility in charge or the delegated healthcare worker responsible for outpatient services who is present at the facility.</p>
+    
+    <p>Before commencement of the interview, it is necessary to obtain consent from the healthcare worker and assure them of the security of information collected by reading out the information below:</p>
+    
+    <p>“My name is
+    <select id="profile" required="">
+        <option value="">Select Name</option>
+        <option value="Samuel Kimanthi">Samuel Kimanthi</option>
+        <option value="Jeniffer">Jeniffer</option>
+        <option value="John">John</option>
+        <option value="Mercy Kioko">Mercy Kioko</option>
+        <option value="Victor Mathu">Victor Mathu</option>
+        <option value="Mark">Mark</option>
+        <option value="Purity Akinyi">Purity Akinyi</option>
+        <option value="Elizabeth Auma">Elizabeth Auma</option>
+        <option value="Wachelon Andrew">Wachelon Andrew</option>
+        <option value="Ismael">Ismael</option>
+        <option value="Nancy Apondi">Nancy Apondi</option>
+        <option value="Maureen Oduor">Maureen Oduor</option>
+        <option value="Other">Other</option>
+    </select>                       .We are here on behalf of <select id="profile" required="">
+        <option value="">Select Organization</option>
+        <option value="NGO">NGO</option>
+        <option value="County Government">County Government</option>
+        <option value="National Government">National Government</option>
+        <option value="University">University</option>
+        </select> conducting a survey of Health facilities to assist the government in knowing more about health services in the county. In particular, we would like to understand the family planning services that your facility provides and challenges you face in meeting the family planning needs of your clients.</p>
+    
+    <p>Your facility was selected to participate in this study because it serves people in this area, based on discussions we had with the county health leadership. We will be asking you questions about various health services, but with a focus on family planning.</p>
+    
+    <p>Information about your facility may be used by the county health department, organizations supporting services in your facility, and researchers, for planning service improvement or conducting further studies of health services. Please be assured that this discussion is strictly confidential, and neither your name nor that of any other health worker respondents participating in this study will be included in the data set or in any report. However, there is a chance that any of these respondents may be identified later, but we ask for your help to ensure that the information we collect is accurate.</p>
+    
+    <p>You may refuse to answer any question or choose to stop the interview at any time. However, we hope you will answer all the questions, but if there are questions where someone else is the most appropriate to provide the information, we would appreciate it if you introduce us to that person.</p>
+    
+    <p>At this point, do you have any questions about the study?</p>
+    <label>YES <input type="radio" name="questions-about-study" value="yes"></label>
+    <label>NO <input type="radio" name="questions-about-study" value="no"></label>
+    
+    <p>Do you allow us to proceed with this interview?</p>
+    <label>YES <input type="radio" name="allow-interview" value="yes"></label>
+    <label>NO <input type="radio" name="allow-interview" value="no"></label>
+    <p><strong>N/B IF NO, STOP THE INTERVIEW AND THANK THE RESPONDENT.</strong></p>
+
+    <h3>Interview Details</h3>
+    <label for="interviewer-name">Interviewer Name: <input type="text" id="interviewer-name" required=""></label>
+    <label for="interview-start-time">Interview Start Time: <input type="time" id="interview-start-time" required=""></label>
+
+    <h3>A. Facility Identification</h3>
+    <label>Facility Name: <input type="text" required=""></label>
+    <label>GPS Coordinates: <input type="text"></label>
+    <label>County: <input type="text" required=""></label>
+    <label>Sub County: <input type="text" required=""></label>
+    
+    <label>Facility Ownership:</label>
+    <div class="flex-container">
+        <label><input type="checkbox"> Public</label>
+        <label><input type="checkbox"> Private</label>
+        <label><input type="checkbox"> Faith Based</label>
+        <label><input type="checkbox"> NGO</label>
+        <label><input type="checkbox"> Other</label>
+        <label><input type="checkbox"> Private (non-profit)</label>
+    </div>
+
+    <label>Facility Level and Type:</label>
+    <div class="flex-container">
+        <label><input type="radio" name="facility-level" value="level2"> Level 2</label>
+        <label><input type="radio" name="facility-level" value="level3"> Level 3</label>
+        <label><input type="radio" name="facility-level" value="level4"> Level 4</label>
+        <label><input type="radio" name="facility-level" value="level5"> Level 5</label>
+        <label><input type="radio" name="facility-level" value="other"> Other</label>
+    </div>
+
+    <label>Nature of Services Offered:</label>
+    <div class="flex-container">
+        <label><input type="checkbox"> Outpatient</label>
+        <label><input type="checkbox"> Inpatient</label>
+        <label><input type="checkbox"> Both</label>
+    </div>
+
+    <label>Date of Visit: <input type="date" required=""></label>
+    
+    <h3>Interviewer Details</h3>
+    <label>Interview Conducted By: <input type="text"></label>
+    <label>Gender: <input type="text"></label>
+
+    <h3>J. Services Offered in this Facility</h3>
+    <div class="flex-container">
+        <label><input type="checkbox"> HIV/AIDS care and treatment</label>
+        <label><input type="checkbox"> Malaria care and treatment</label>
+        <label><input type="checkbox"> Family planning and reproductive health</label>
+        <label><input type="checkbox"> Storage of contraceptives and related medicines</label>
+        <label><input type="checkbox"> ANC services</label>
+        <label><input type="checkbox"> Immunization</label>
+        <label><input type="checkbox"> Maternal and child health services</label>
+        <label><input type="checkbox"> Adolescent health</label>
+        <label><input type="checkbox"> Laboratory services</label>
+        <label><input type="checkbox"> eMONC/BeMONC</label>
+        <label><input type="checkbox"> STI care services</label>
+        <label><input type="checkbox"> Cancer screening</label>
+    </div>
+
+    <h3>B. Staffing</h3>
+    <label>Please tell me how many staff with each qualification:</label>
+    <div>
+        <label>Consultants: <input type="number"></label>
+        <label>Doctors: <input type="number"></label>
+        <label>Intern Doctors: <input type="number"></label>
+        <label>Registered Clinical Officers: <input type="number"></label>
+        <label>Clinical Officers: <input type="number"></label>
+        <label>Midwives: <input type="number"></label>
+        <label>Nursing Officers: <input type="number"></label>
+        <label>Enrolled Nurses: <input type="number"></label>
+        <label>Enrolled Comprehensive Nurses: <input type="number"></label>
+        <label>Registered Nurses: <input type="number"></label>
+        <label>Degree Nurses: <input type="number"></label>
+        <label>Nursing Assistants: <input type="number"></label>
+        <label>Pharmacists: <input type="number"></label>
+        <label>Dispensers: <input type="number"></label>
+        <label>Orthopedic Staff: <input type="number"></label>
+        <label>Ophthalmic Staff: <input type="number"></label>
+        <label>Laboratory Technologists: <input type="number"></label>
+        <label>Laboratory Technicians: <input type="number"></label>
+        <label>Laboratory Assistants: <input type="number"></label>
+        <label>Hospital Administrators: <input type="number"></label>
+        <label>Dentists: <input type="number"></label>
+        <label>Dental Assistants: <input type="number"></label>
+        <label>X-ray and Related Technicians: <input type="number"></label>
+        <label>Physiotherapists, Occupational Therapists &amp; Related Staff: <input type="number"></label>
+        <label>Other Staff (Cleaners, Security, Maintenance, etc.): <input type="number"></label>
+        <label>Social Workers: <input type="number"></label>
+        <label>Health Educators: <input type="number"></label>
+        <label>Community Health Workers (VHTs): <input type="number"></label>
+    </div>
+    <label>Comments/Remarks:</label>
+    <textarea rows="3"></textarea>
+
+    <h3>C. Family Planning Services</h3>
+    <p>VISIT THE ROOM/LOCATION IN THE FACILITY WHERE FAMILY PLANNING SERVICES ARE PROVIDED. TO THE HEALTH CARE WORKER MOST KNOWLEDGEABLE ABOUT FP/RH SERVICES IN THE FACILITY, ASK THE FOLLOWING QUESTIONS.</p>
+    <label>1. How often does the facility provide family planning services?</label>
+    <div class="flex-container">
+        <label><input type="radio" name="fp-frequency" value="daily"> Daily</label>
+        <label><input type="radio" name="fp-frequency" value="weekly"> Weekly</label>
+        <label><input type="radio" name="fp-frequency" value="on-demand"> On Demand</label>
+    </div>
+
+    <label>2. Available Today? (Select one)</label>
+
+    <div class="flex-container">
+        <label>Combined Oral Contraceptive Pills</label>
+        <label><input type="radio" name="fp-available" value="observed"> Observed Available</label>
+        <label><input type="radio" name="fp-available" value="reported"> Reported Available But Not Seen</label>
+        <label><input type="radio" name="fp-available" value="not-available"> Not Available Today</label>
+        <label><input type="radio" name="fp-available" value="never"> Never Available</label>
+        <label><input type="radio" name="fp-available" value="na"> Not Applicable</label>
+    </div>
+    <div class="flex-container">
+        <label>Progestrin Only Contraceptive Pills Pills</label>
+        <label><input type="radio" name="fp-available" value="observed"> Observed Available</label>
+        <label><input type="radio" name="fp-available" value="reported"> Reported Available But Not Seen</label>
+        <label><input type="radio" name="fp-available" value="not-available"> Not Available Today</label>
+        <label><input type="radio" name="fp-available" value="never"> Never Available</label>
+        <label><input type="radio" name="fp-available" value="na"> Not Applicable</label>
+    </div>
+    <div class="flex-container">
+        <label>Combined injectable contraceptives</label>
+        <label><input type="radio" name="fp-available" value="observed"> Observed Available</label>
+        <label><input type="radio" name="fp-available" value="reported"> Reported Available But Not Seen</label>
+        <label><input type="radio" name="fp-available" value="not-available"> Not Available Today</label>
+        <label><input type="radio" name="fp-available" value="never"> Never Available</label>
+        <label><input type="radio" name="fp-available" value="na"> Not Applicable</label>
+    </div>
+    <div class="flex-container">
+        <label>Progestin-Only Injectable Contraceptive</label>
+        <label><input type="radio" name="fp-available" value="observed"> Observed Available</label>
+        <label><input type="radio" name="fp-available" value="reported"> Reported Available But Not Seen</label>
+        <label><input type="radio" name="fp-available" value="not-available"> Not Available Today</label>
+        <label><input type="radio" name="fp-available" value="never"> Never Available</label>
+        <label><input type="radio" name="fp-available" value="na"> Not Applicable</label>
+    </div>
+    <div class="flex-container">
+        <label>Male ⚣ Condoms</label>
+        <label><input type="radio" name="fp-available" value="observed"> Observed Available</label>
+        <label><input type="radio" name="fp-available" value="reported"> Reported Available But Not Seen</label>
+        <label><input type="radio" name="fp-available" value="not-available"> Not Available Today</label>
+        <label><input type="radio" name="fp-available" value="never"> Never Available</label>
+        <label><input type="radio" name="fp-available" value="na"> Not Applicable</label>
+    </div>
+    <div class="flex-container">
+        <label>Female ⚢ Condoms </label>
+        <label><input type="radio" name="fp-available" value="observed"> Observed Available</label>
+        <label><input type="radio" name="fp-available" value="reported"> Reported Available But Not Seen</label>
+        <label><input type="radio" name="fp-available" value="not-available"> Not Available Today</label>
+        <label><input type="radio" name="fp-available" value="never"> Never Available</label>
+        <label><input type="radio" name="fp-available" value="na"> Not Applicable</label>
+    </div>
+    <div class="flex-container">
+        <label>Intrauterine Contraceptive Device</label>
+        <label><input type="radio" name="fp-available" value="observed"> Observed Available</label>
+        <label><input type="radio" name="fp-available" value="reported"> Reported Available But Not Seen</label>
+        <label><input type="radio" name="fp-available" value="not-available"> Not Available Today</label>
+        <label><input type="radio" name="fp-available" value="never"> Never Available</label>
+        <label><input type="radio" name="fp-available" value="na"> Not Applicable</label>
+    </div>
+    <div class="flex-container">
+        <label>Implant 1rod</label>
+        <label><input type="radio" name="fp-available" value="observed"> Observed Available</label>
+        <label><input type="radio" name="fp-available" value="reported"> Reported Available But Not Seen</label>
+        <label><input type="radio" name="fp-available" value="not-available"> Not Available Today</label>
+        <label><input type="radio" name="fp-available" value="never"> Never Available</label>
+        <label><input type="radio" name="fp-available" value="na"> Not Applicable</label>
+    </div>
+    <div class="flex-container">
+        <label>Implant 2rod</label>
+        <label><input type="radio" name="fp-available" value="observed"> Observed Available</label>
+        <label><input type="radio" name="fp-available" value="reported"> Reported Available But Not Seen</label>
+        <label><input type="radio" name="fp-available" value="not-available"> Not Available Today</label>
+        <label><input type="radio" name="fp-available" value="never"> Never Available</label>
+        <label><input type="radio" name="fp-available" value="na"> Not Applicable</label>
+     </div>
+    <div class="flex-container">
+        <label>Emergency Contraceptive Pills</label>
+        <label><input type="radio" name="fp-available" value="observed"> Observed Available</label>
+        <label><input type="radio" name="fp-available" value="reported"> Reported Available But Not Seen</label>
+        <label><input type="radio" name="fp-available" value="not-available"> Not Available Today</label>
+        <label><input type="radio" name="fp-available" value="never"> Never Available</label>
+        <label><input type="radio" name="fp-available" value="na"> Not Applicable</label>
+     </div>
+     <div class="flex-container">
+        <label>Male Sterilization</label>
+        <label><input type="radio" name="fp-available" value="observed"> Observed Available</label>
+        <label><input type="radio" name="fp-available" value="reported"> Reported Available But Not Seen</label>
+        <label><input type="radio" name="fp-available" value="not-available"> Not Available Today</label>
+        <label><input type="radio" name="fp-available" value="never"> Never Available</label>
+        <label><input type="radio" name="fp-available" value="na"> Not Applicable</label>
+     </div>
+    <div class="flex-container">
+        <label>Female Sterilization</label>
+        <label><input type="radio" name="fp-available" value="observed"> Observed Available</label>
+        <label><input type="radio" name="fp-available" value="reported"> Reported Available But Not Seen</label>
+        <label><input type="radio" name="fp-available" value="not-available"> Not Available Today</label>
+        <label><input type="radio" name="fp-available" value="never"> Never Available</label>
+        <label><input type="radio" name="fp-available" value="na"> Not Applicable</label>
+    </div>
+        <label>Other<textarea></textarea></label>
+    <h3>3. Sources of FP Commodities and Supplies?</h3>
+    <label>(Select all that apply)</label>
+    <div class="flex-container">
+        <label><input type="checkbox"> County Government</label>
+        <label><input type="checkbox"> Donors/NGOs</label>
+        <label><input type="checkbox"> National Government</label>
+        <label><input type="checkbox"> Facility Procurement</label>
+        <label><input type="checkbox"> Others, specify:</label><input type="text">
+    </div>
+
+    <label>4. If the facility has a budgetary allocation to FP commodities and supplies, approximately how much is allocated to this?: Kshs <input type="number"></label>
+    <label>5. How Frequently Are FP Commodities Supplied to This Facility?</label>
+    <div class="flex-container">
+        <label><input type="radio" name="fp-supply-frequency" value="weekly"> Weekly</label>
+        <label><input type="radio" name="fp-supply-frequency" value="monthly"> Monthly</label>
+        <label><input type="radio" name="fp-supply-frequency" value="as-needed"> As Per Need</label>
+        <label><input type="radio" name="fp-supply-frequency" value="others"> Others, specify:</label><input type="text">
+    </div>
+
+    <label>6. Have there been challenges in access to FP services in the last 6 months?</label>
+    <div class="flex-container">
+        <label><input type="radio" name="fp-challenges" value="yes"> Yes</label>
+        <label><input type="radio" name="fp-challenges" value="no"> No</label>
+        <label><input type="radio" name="fp-challenges" value="na"> No Changes</label>
+        <label><input type="radio" name="fp-challenges" value="unsure"> Not Sure</label>
+    </div>
+
+    <label>7. Do you have National Family Planning Guidelines available in this facility today?</label>
+    <div class="flex-container">
+        <label><input type="radio" name="fp-guidelines-available" value="observed"> Yes, Observed</label>
+        <label><input type="radio" name="fp-guidelines-available" value="reported"> Yes, Reported Not Seen</label>
+        <label><input type="radio" name="fp-guidelines-available" value="no"> No</label>
+    </div>
+
+    <label>8. Are you familiar with the Reproductive Health Policy?</label>
+    <div class="flex-container">
+        <label><input type="radio" name="rh-policy-familiarity" value="yes-read"> Yes (Have Read It)</label>
+        <label><input type="radio" name="rh-policy-familiarity" value="yes-not-read"> Yes (But Haven't Read It)</label>
+        <label><input type="radio" name="rh-policy-familiarity" value="no"> No</label>
+    </div>
+<label>9. Do you have other policies/regulations/guidelines related to family planning that you have read or have in depth awareness?Please explain</label>
+<div class="flex-container">
+<label><textarea></textarea></label>
+    <label>10. Have you or any provider(s) of FP services received any FP training in the last year?</label>
+    <div class="flex-container">
+        <label><input type="radio" name="fp-training" value="yes"> Yes</label>
+        <label><input type="radio" name="fp-training" value="no"> No</label>
+    </div>
+
+    <label>11. Have you or any provider(s) of FP services received any training in adolescent sexual and reproductive health in the past one year?</label>
+    <div class="flex-container">
+        <label><input type="radio" name="adolescent-rh-training" value="yes"> Yes</label>
+        <label><input type="radio" name="adolescent-rh-training" value="no"> No</label>
+    </div>
+    <label>12. If yes in 10 and 11 above, what aspects of Family planning were you trained on?</label>
+    <div class="flex-container">
+         <label><input type="radio" name="adolescent-fpl-training" value="FP service delivery"> FP Service Delivery</label>
+         <label><input type="radio" name="adolescent-fpl-training" value="Commodity mngt"> Commodity Management</label>
+         <label><input type="radio" name="adolescent-fpl-training" value="Both"> Both</label>
+    <h3>Stock-Out Information</h3>
+    <label>13. Was there any stock-out of any regularly supplied contraceptives in the last 6 months?</label>
+    <div>
+        <label>Combined Oral Contraceptive Pills: <input type="radio" name="stock-out-co-cp" value="yes"> Yes <input type="radio" name="stock-out-co-cp" value="no"> No</label>
+        <label>Progestin Only Contraceptive Pills: <input type="radio" name="stock-out-po-cp" value="yes"> Yes <input type="radio" name="stock-out-po-cp" value="no"> No</label>
+        <label>Combined Injectable Contraceptives: <input type="radio" name="stock-out-ci-cp" value="yes"> Yes <input type="radio" name="stock-out-ci-cp" value="no"> No</label>
+        <label>Projestin-Only Injectable Contraceptives: <input type="radio" name="stock-out-zi-cp" value="yes"> Yes <input type="radio" name="stock-out-ci-cp" value="no"> No</label>
+        <label>Male Condoms: <input type="radio" name="stock-out-di-cp" value="yes"> Yes <input type="radio" name="stock-out-ci-cp" value="no"> No</label>
+        <label>Female Condoms Contraceptives: <input type="radio" name="stock-out-si-cp" value="yes"> Yes <input type="radio" name="stock-out-ci-cp" value="no"> No</label>
+        <label>Implants: <input type="radio" name="stock-out-ki-cp" value="yes"> Yes <input type="radio" name="stock-out-ci-cp" value="no"> No</label>
+        <label>Other(specify)</label>
+         <div class="flex-container" <textarea="">
+         </div>
+        <label>Remarks</label>
+           <div class="flex-container">
+             <label><textarea></textarea></label>
+           </div>
+    </div>
+       <label>Other Observations/Comments:</label>
+    <textarea rows="3"></textarea>
+     <h3>14. Are stock-outs a recurring challenge or they happened rarely?</h3>
+     <div class="flex-container">
+        <label><input type="radio" name="stockouts-challenges" value="yes"> Recurring problem</label>
+        <label><input type="radio" name="stockouts-challenges" value="no"> Rare Problem</label>
+     </div>
+    <h3>15. What caused the stock outs mentioned above?</h3>
+      <div class="flex-container">
+          <textarea></textarea>
+      </div>
+   <h3>16. What was done to address the stock-out problem?</h3>
+       <div class="flex-container">
+          <textarea></textarea>
+       </div>  
+    <label>Other Observations/Comments:</label>
+    <textarea rows="3"></textarea>
+
+    
+    <label>17. Does your facility run a community outreach program on FP?</label>
+    <div class="flex-container">
+        <label><input type="radio" name="community-outreach" value="yes"> Yes</label>
+        <label><input type="radio" name="community-outreach" value="no"> No</label>
+    </div>
+
+    <label>18. How often do your health workers go into the communities?</label>
+    <div class="flex-container">
+        <label><input type="radio" name="community-visit-frequency" value="weekly"> Weekly</label>
+        <label><input type="radio" name="community-visit-frequency" value="on-demand"> On Demand</label>
+        <label><input type="radio" name="community-visit-frequency" value="community-workers"> Has Community-Based Workers</label>
+    </div>
+
+    <label>19. What are the challenges the facility faces in running the community outreach program?:</label>
+    <textarea rows="3"></textarea>
+    <label>20. What have you done to address the challenges?:</label>
+    <textarea rows="3"></textarea>
+
+    <h3>E. Family Planning Delivery Challenges</h3>
+    <label>21.What are the main challenges that the facility faces with respect to delivery of family planning services?</label>
+    <textarea rows="3"></textarea>
+    <label>22. Recommended Actions to Address These Challenges:</label>
+    <textarea rows="3"></textarea>
+
+    <h3>F. Family Planning Challenges Identified by Community Members</h3>
+    <label>23. What issues/challenges do you face mostly relating to family planning from the local community?</label>
+    <textarea rows="3"></textarea>
+
+    <label>Looking at the main issue/challenge from community members towards FP, please answer the following;</label>
+    <label>A) What do you think about this challenge from the perspective of the health facility?</label>
+    <textarea rows="3"></textarea>
+    <label>B) What do the family planning guidelines say on how you should address this challenge?</label>
+    <textarea rows="3"></textarea>
+    <label>C) What resources and capacity do you have to address this challenge?</label>
+    <textarea rows="3"></textarea>
+    <label>D) What should be done to address this challenge?</label>
+    <textarea rows="3"></textarea>
+
+    <h3>G. Adolescent FP Services</h3>
+    <label>24. Does your facility have a designated area for family planning and reproductive health services for young people?</label>
+    <div class="flex-container">
+        <label><input type="radio" name="adolescent-services" value="yes"> Yes</label>
+        <label><input type="radio" name="adolescent-services" value="no"> No</label>
+    </div>
+    <label>NB:ASK TO BE SHOWN WHERE ADOLESCENT HEALTH SERVICES ARE PROVIDED AND ASK THE FOLLOWING QUESTIONS;</label>
+
+    <label>25. Does this facility provide any modern methods of family planning for unmarried adolescents?</label>
+    <div class="flex-container">
+        <label><input type="radio" name="fp-unmarried-adolescents" value="yes"> Yes</label>
+        <label><input type="radio" name="fp-unmarried-adolescents" value="no"> No</label>
+    </div>
+    <label>26. Are there other methods of family planning that you do not provide to young people?(explain)</label>
+    <div class="flex-container">
+        <label><textarea></textarea></label>
+    </div>
+    <label>27. Do you have the national guidelines for service provision to adolescents available in this facility today?(if Yes,ask to be shown guidelines)</label>
+      <div class="flex-container">
+       <label><input type="radio" name="guidelines-services" value="Yes -have read it"> Yes(Have read it)</label>
+       <label><input type="radio" name="guidelines-services" value="Yes -haven't read"> Yes(But haven't read it)</label>
+       <label><input type="radio" name="guidelines-services" value="no"> No</label>
+     </div>
+   <label>28. Have you or any providers of adolescent health services received any training on the provision of adolescent health services in the last one year?</label>
+       <div class="flex-container">
+          <label><textarea></textarea></label>
+       </div>
+
+     <h3>H. PREGNANCY TESTS</h3>
+     <label>29.Does this facility do urine rapid tests for pregnancy?[IF YES: Ask onsite or offsite]</label>
+         <div class="flex-container">
+             <label><input type="radio" name="pregnancies-services" value="Yes -onsite"> Yes,Onsite</label>
+             <label><input type="radio" name="pregnancies-services" value="Yes -offsite"> Yes,Offsite</label>
+             <label><input type="radio" name="pregnancies-services" value="no"> No</label>
+        </div>
+     <label>30. Do you have pregnancy testing kits in the facility today?</label>
+         <div class="flex-container">
+              <label><input type="radio" name="pregnancy-kits" value="available"> Available</label>
+              <label><input type="radio" name="pregnancy-kits" value="available not seen"> Available Not Seen</label>
+              <label><input type="radio" name="pregnancy-kits" value="not available"> Not Available</label>
+         </div>
+
+     <h3>I. HEALTH FACILITY OBSERVATION</h3>
+     <label>30. Is there a sign or poster advertising the availability of the following services?</label>
+         <div class="flex-container">
+             <label>a.Family Planning</label>
+             <label><input type="radio" name="facility-observation" value="inside"> Yes, Inside</label>
+             <label><input type="radio" name="facility-observation" value="outside"> Yes, Outside</label>
+             <label><input type="radio" name="facility-observation" value="both"> Yes, Both</label>
+             <label><input type="radio" name="facility-observation" value="no"> No</label>
+         </div>
+         <div class="flex-container">
+             <label>b.ANC/MNCH</label>
+             <label><input type="radio" name="facility-observation" value="inside"> Yes, Inside</label>
+             <label><input type="radio" name="facility-observation" value="outside"> Yes, Outside</label>
+             <label><input type="radio" name="facility-observation" value="both"> Yes, Both</label>
+             <label><input type="radio" name="facility-observation" value="no"> No</label>
+         </div>
+    <label>c.Other Services(specify)</label>
+        <div class="flex-container">
+             <label><textarea></textarea></label>
+        </div>
+   <label>d.Remarks/Comments</label>
+       <div class="flex-container">
+             <label><textarea></textarea></label>
+       </div><br>
+  <label>31. Is there a waiting area and space for examination and counselling?</label>
+        <div class="flex-container">
+             <label><input type="radio" name="space-examination" value="Yes enough"> Yes,Enough</label>
+             <label><input type="radio" name="space-examination" value="Yes, insufficient"> Yes,Insufficient</label>
+             <label><input type="radio" name="space-examination" value="none"> None</label>
+         </div>
+  <label>a. Is there a private area available for FP counselling where other clients cannot see?</label>
+        <div class="flex-container">
+             <label><input type="radio" name="space-examination" value="Yes enough"> Yes,Enough</label>
+             <label><input type="radio" name="space-examination" value="Yes, insufficient"> Yes,Insufficient</label>
+             <label><input type="radio" name="space-examination" value="none"> None</label>
+         </div>
+  <label>b. Is there a private area available for FP counselling where other clients cannot hear?</label>
+        <div class="flex-container">
+             <label><input type="radio" name="space-examination" value="Yes enough"> Yes,Enough</label>
+             <label><input type="radio" name="space-examination" value="Yes, insufficient"> Yes,Insufficient</label>
+             <label><input type="radio" name="space-examination" value="none"> None</label>
+         </div>
+  <label>c. Is there a private area available for examinations where other clients cannot hear?</label>
+        <div class="flex-container">
+             <label><input type="radio" name="space-examination" value="Yes enough"> Yes,Enough</label>
+             <label><input type="radio" name="space-examination" value="Yes, insufficient"> Yes,Insufficient</label>
+             <label><input type="radio" name="space-examination" value="none"> None</label>
+         </div>
+  <label>d. Are there waiting seats for clients?</label>
+        <div class="flex-container">
+             <label><input type="radio" name="space-examination" value="Yes enough"> Yes,Enough</label>
+             <label><input type="radio" name="space-examination" value="Yes, insufficient"> Yes,Insufficient</label>
+             <label><input type="radio" name="space-examination" value="none"> None</label>
+         </div>
+  <label>e. Is the examination area clean?</label>
+        <div class="flex-container">
+             <label><input type="radio" name="space-examination" value="Yes enough"> Yes,Enough</label>
+             <label><input type="radio" name="space-examination" value="Yes, insufficient"> Yes,Insufficient</label>
+             <label><input type="radio" name="space-examination" value="none"> None</label>
+         </div>
+ <label>Remarks/Comments:</label>
+        <div class="flex-container">
+             <label><textarea></textarea></label>
+         </div><br>
+<label>32. Are there written materials available for patients to take away from the facility?(Observe)</label>
+<label>a. Antenantal care/Delivery</label>
+       <div class="flex-container">
+           <label><input type="radio" name="material-availabilty" value="yes"> Yes</label>
+           <label><input type="radio" name="material-availabilty" value="no"> No</label>
+       </div>
+<label>b. Post-Partum</label>
+       <div class="flex-container">
+           <label><input type="radio" name="material-availabilty" value="yes"> Yes</label>
+           <label><input type="radio" name="material-availabilty" value="no"> No</label>
+       </div>
+<label>c. Family Planning (including Dual Protection and EC)</label>
+       <div class="flex-container">
+           <label><input type="radio" name="material-availabilty" value="yes"> Yes</label>
+           <label><input type="radio" name="material-availabilty" value="no"> No</label>
+       </div>
+<label>d. Breastfeeding</label>
+       <div class="flex-container">
+           <label><input type="radio" name="material-availabilty" value="yes"> Yes</label>
+           <label><input type="radio" name="material-availabilty" value="no"> No</label>
+       </div>
+<label>e. Post abortion care</label>
+       <div class="flex-container">
+           <label><input type="radio" name="material-availabilty" value="yes"> Yes</label>
+           <label><input type="radio" name="material-availabilty" value="no"> No</label>
+       </div>
+<label>f. Other(specify)</label>
+       <div class="flex-container">
+           <label><textarea></textarea></label>
+      </div>
+<label>g. Remarks/Comments:</label>
+       <div class="flex-container">
+           <label><textarea></textarea></label>
+       </div><br>
+<label>33. Was there any supervisory visit to this facility(By someone Outside) in the last three months on Family Planning issues?</label>
+      <div class="flex-container">
+          <label><textarea></textarea></label>
+     </div>
+<label>34.Is the facility staff or the facility in-charge involved in budget process for FP services?</label>
+     <div class="flex-container">
+       <label><textarea></textarea></label>
+     </div>
+<label>35. Please comment on the level of involvement.</label>
+     <div class="flex-container">
+       <label><textarea></textarea></label>
+     </div>
+<label>36. Remarks</label>
+       <div class="flex-container">
+          <label><textarea></textarea></label>
+        </div><br>
+<p><strong>------------END OF INTERVIEW AND GENERAL OBSERVATIONS------------</strong></p><br>
+<p>We have now completed all of the questions. Thank you for your participation</p>
+
+<label>Interview End Time</label>
+   <div class="flex-container">
+     <label>Enter time <input type="time" id="endofinterview"></label>
+   </div>
+<label>Interview Result</label>
+      <div class="flex-container">
+         <label><input type="radio" name="interview-status" value="Completed"> Completed</label>
+         <label><input type="radio" name="interview-status" value="Partially Completed"> Partially completed</label>
+         <label><input type="radio" name="interview-status" value="Other(specify)"> Else</label>
+      </div>
+<label>Comments about respondents</label>
+   <div class="flex-container">
+     <label><textarea></textarea></label>
+   </div>
+<label>Comments on specific questions:</label>
+    <div class="flex-container">
+       <label><textarea></textarea></label>
+    </div>
+<label>Any other Comments/Observations:</label>
+     <div class="flex-container">
+        <label><textarea></textarea></label>
+</div>
+<label>Date of Interview</label>
+  <div class="flex-container">
+<label>Interview End Date <input type="date" required=""></label>
+  </div>
+<form id="myForm">
+      <button type="submit">Submit Data for Analysis</button>
+ </form>
+
+
+<script>
+function goToNextPage() {
+  // Example: check if a field is filled
+  const county = document.querySelector('input[name="county"]').value;
+  if (!county) {
+    alert('Please fill in the county');
+    return;
+  }
+
+  // Optional: save data locally
+  localStorage.setItem('county', county);
+
+  // Go to next page
+  window.location.href = 'third page.html';
+}
+</script>
+</div>
+</div>
+
+
+</div></div>
+  <!-- =========================================
+AI VOICE INTERVIEW SYSTEM UPGRADE
+ADD BEFORE </body>
+========================================= -->
+
+<style>
+
+/* =========================
+VOICE SYSTEM PANEL
+========================= */
+
+.ai-voice-system{
+  position: sticky;
+  top: 10px;
+  z-index: 9999;
+  background: linear-gradient(
+    135deg,
+    #020617,
+    #0f172a
+  );
+  color: white;
+  padding: 24px;
+  border-radius: 18px;
+  margin-bottom: 25px;
+  box-shadow: 0 0 35px rgba(0,0,0,0.35);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.ai-voice-system h2{
+  margin-top: 0;
+  color: #67e8f9;
+}
+
+.ai-controls{
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 18px;
+}
+
+.ai-controls button{
+  border: none;
+  padding: 12px 18px;
+  border-radius: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.read-btn{
+  background: #2563eb;
+  color: white;
+}
+
+.listen-btn{
+  background: #16a34a;
+  color: white;
+}
+
+.stop-btn{
+  background: #dc2626;
+  color: white;
+}
+
+.ai-controls button:hover{
+  transform: translateY(-2px);
+}
+
+.ai-status{
+  margin-top: 18px;
+  font-size: 14px;
+  color: #cbd5e1;
+}
+
+.ai-progress{
+  width: 100%;
+  height: 14px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 999px;
+  overflow: hidden;
+  margin-top: 20px;
+}
+
+.ai-progress-fill{
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    #06b6d4,
+    #3b82f6
+  );
+  transition: width .4s ease;
+}
+
+.ai-stats{
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 14px;
+  margin-top: 20px;
+}
+
+.ai-stat{
+  background: rgba(255,255,255,0.08);
+  padding: 16px;
+  border-radius: 14px;
+  text-align: center;
+}
+
+.ai-stat strong{
+  display: block;
+  margin-top: 8px;
+  font-size: 24px;
+}
+
+.ai-warning{
+  background: rgba(239,68,68,0.12);
+  color: #fecaca;
+  padding: 14px;
+  border-radius: 12px;
+  margin-top: 18px;
+  display: none;
+}
+
+.active-question{
+  animation: glowPulse 2s infinite;
+  border-radius: 10px;
+}
+
+@keyframes glowPulse{
+  0%{
+    box-shadow: 0 0 0 rgba(34,211,238,0);
+  }
+  50%{
+    box-shadow: 0 0 30px rgba(34,211,238,0.25);
+  }
+  100%{
+    box-shadow: 0 0 0 rgba(34,211,238,0);
+  }
+}
+
+@media(max-width:768px){
+
+  .ai-stats{
+    grid-template-columns:1fr;
+  }
+
+}
+
+</style>
+
+
+
+<script>
+
+/* =====================================
+VOICE INTERVIEW ENGINE
+===================================== */
+
+let recognitionEngine;
+let activeInput = null;
+
+/* Capture ALL form fields */
+
+const allInterviewFields = document.querySelectorAll(
+  'textarea, input[type="text"], input[type="number"], input[type="date"], input[type="time"]'
+);
+
+/* Detect focused field */
+
+allInterviewFields.forEach(field => {
+
+  field.addEventListener('focus', () => {
+
+    activeInput = field;
+
+    highlightQuestion(field);
+
+    autoNarrateQuestion(field);
+
+  });
+
+  field.addEventListener('input', () => {
+
+    saveInterviewProgress();
+
+    updateInterviewMetrics();
+
+  });
+
+});
+
+/* Highlight active area */
+
+function highlightQuestion(field){
+
+  document
+    .querySelectorAll('.active-question')
+    .forEach(el => el.classList.remove('active-question'));
+
+  const parent =
+    field.closest('label, div, p, section');
+
+  if(parent){
+    parent.classList.add('active-question');
+  }
+
+}
+
+/* Read nearby label/question */
+
+function autoNarrateQuestion(field){
+
+  let questionText = '';
+
+  const parentLabel = field.closest('label');
+
+  if(parentLabel){
+
+    questionText =
+      parentLabel.innerText
+      .replace(field.value, '')
+      .trim();
+
+  }
+
+  if(!questionText){
+
+    const previous =
+      field.previousElementSibling;
+
+    if(previous){
+      questionText = previous.innerText;
+    }
+
+  }
+
+  if(questionText){
+    speakQuestion(questionText);
+  }
+
+}
+
+/* Natural AI voice */
+
+function speakQuestion(text){
+
+  window.speechSynthesis.cancel();
+
+  const utterance =
+    new SpeechSynthesisUtterance(text);
+
+  const voices =
+    window.speechSynthesis.getVoices();
+
+  const premiumVoice =
+    voices.find(v => v.name.includes('Google')) ||
+    voices.find(v => v.name.includes('Microsoft')) ||
+    voices.find(v => v.name.includes('Natural')) ||
+    voices[0];
+
+  if(premiumVoice){
+    utterance.voice = premiumVoice;
+  }
+
+  utterance.rate = 0.92;
+  utterance.pitch = 1;
+  utterance.volume = 1;
+
+  speechSynthesis.speak(utterance);
+
+}
+
+/* Manual narration */
+
+function readCurrentQuestion(){
+
+  if(!activeInput){
+
+    speakQuestion(
+      "Please click inside any question field first."
+    );
+
+    return;
+  }
+
+  autoNarrateQuestion(activeInput);
+
+}
+
+/* Start speech recognition */
+
+function startInterviewVoice(){
+
+  const SpeechRecognition =
+    window.SpeechRecognition ||
+    window.webkitSpeechRecognition;
+
+  if(!SpeechRecognition){
+
+    alert(
+      'Speech recognition not supported in this browser.'
+    );
+
+    return;
+  }
+
+  if(!activeInput){
+
+    alert(
+      'Click into a field before recording.'
+    );
+
+    return;
+  }
+
+  recognitionEngine =
+    new SpeechRecognition();
+
+  recognitionEngine.continuous = true;
+
+  recognitionEngine.interimResults = true;
+
+  recognitionEngine.lang = 'en-US';
+
+  document.getElementById(
+    'voiceInterviewStatus'
+  ).innerText =
+    '🎙 Listening... Speak now';
+
+  recognitionEngine.onresult = function(event){
+
+    let transcript = '';
+
+    for(
+      let i = event.resultIndex;
+      i < event.results.length;
+      i++
+    ){
+
+      transcript +=
+        event.results[i][0].transcript;
+
+    }
+
+    activeInput.value = transcript;
+
+    saveInterviewProgress();
+
+    updateInterviewMetrics();
+
+  };
+
+  recognitionEngine.onerror = function(event){
+
+    document.getElementById(
+      'voiceInterviewStatus'
+    ).innerText =
+      'Error: ' + event.error;
+
+  };
+
+  recognitionEngine.onend = function(){
+
+    document.getElementById(
+      'voiceInterviewStatus'
+    ).innerText =
+      'Voice recording stopped';
+
+  };
+
+  recognitionEngine.start();
+
+}
+
+/* Stop recording */
+
+function stopInterviewVoice(){
+
+  if(recognitionEngine){
+
+    recognitionEngine.stop();
+
+  }
+
+}
+
+/* Completion metrics */
+
+function updateInterviewMetrics(){
+
+  let total =
+    allInterviewFields.length;
+
+  let answered = 0;
+
+  allInterviewFields.forEach(field => {
+
+    if(field.value.trim() !== ''){
+
+      answered++;
+
+    }
+
+  });
+
+  const unanswered =
+    total - answered;
+
+  const completion =
+    Math.round(
+      (answered / total) * 100
+    );
+
+  document.getElementById(
+    'answeredFields'
+  ).innerText = answered;
+
+  document.getElementById(
+    'unansweredFields'
+  ).innerText = unanswered;
+
+  document.getElementById(
+    'completionRate'
+  ).innerText = completion + '%';
+
+  document.getElementById(
+    'aiProgressFill'
+  ).style.width = completion + '%';
+
+  detectMissingAnswers();
+
+}
+
+/* Missing response detection */
+
+function detectMissingAnswers(){
+
+  const missing = [];
+
+  allInterviewFields.forEach(
+    (field,index) => {
+
+      if(field.value.trim() === ''){
+
+        missing.push(index + 1);
+
+      }
+
+    }
+  );
+
+  const warning =
+    document.getElementById(
+      'missingQuestionsAlert'
+    );
+
+  if(missing.length > 0){
+
+    warning.style.display = 'block';
+
+    warning.innerHTML =
+      '⚠ Missing responses detected in field(s): <strong>' +
+      missing.join(', ') +
+      '</strong>';
+
+  } else {
+
+    warning.style.display = 'none';
+
+  }
+
+}
+
+/* Auto-save */
+
+function saveInterviewProgress(){
+
+  const savedData = [];
+
+  allInterviewFields.forEach(field => {
+
+    savedData.push(field.value);
+
+  });
+
+  localStorage.setItem(
+    'healthFacilityInterviewBackup',
+    JSON.stringify(savedData)
+  );
+
+}
+
+/* Restore saved answers */
+
+function restoreInterviewProgress(){
+
+  const saved =
+    localStorage.getItem(
+      'healthFacilityInterviewBackup'
+    );
+
+  if(saved){
+
+    const parsed =
+      JSON.parse(saved);
+
+    allInterviewFields.forEach(
+      (field,index) => {
+
+        if(parsed[index]){
+
+          field.value = parsed[index];
+
+        }
+
+      }
+    );
+
+  }
+
+}
+
+/* System initialization */
+
+window.addEventListener('load', () => {
+
+  restoreInterviewProgress();
+
+  updateInterviewMetrics();
+
+  document.getElementById(
+    'voiceInterviewStatus'
+  ).innerText =
+    '✅ AI Voice Interview System Ready';
+
+});
+
+</script></body></html>
