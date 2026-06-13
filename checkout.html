@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hotel Checkout</title>
+<style>
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f4f6f8;
+    margin: 0;
+    padding: 0;
+  }
+  .container {
+    max-width: 900px;
+    margin: 40px auto;
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  }
+  h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #333;
+  }
+  .form-group { display: flex; flex-direction: column; margin-bottom: 15px; }
+  .form-group label { font-weight: 600; margin-bottom: 5px; }
+  .form-group input, .form-group select {
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+  }
+  .form-row { display: flex; gap: 20px; flex-wrap: wrap; }
+  .form-row .form-group { flex: 1; min-width: 150px; }
+  .buttons { text-align: center; margin-top: 25px; }
+  .buttons button {
+    padding: 12px 25px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    margin: 0 10px;
+    cursor: pointer;
+    color: #fff;
+  }
+  .btn-checkout { background-color: #28a745; }
+  .btn-clear { background-color: #dc3545; }
+  .btn-print { background-color: #0d6efd; }
+  .btn-logout { background-color: #6c757d; margin-top: 20px; }
+
+  /* Crypto Ads Slider */
+  .crypto-ads-container {
+    background: #111827;
+    color: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 40px;
+    overflow: hidden;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .crypto-ads-slider {
+    display: flex;
+    animation: slide 15s linear infinite;
+  }
+
+  .crypto-ad {
+    min-width: 100%;
+    text-align: center;
+    font-weight: bold;
+    font-size: 18px;
+    color: #0d6efd;
+    padding: 10px 0;
+  }
+
+  @keyframes slide {
+    0% { transform: translateX(0%); }
+    20% { transform: translateX(0%); }
+    25% { transform: translateX(-100%); }
+    45% { transform: translateX(-100%); }
+    50% { transform: translateX(-200%); }
+    70% { transform: translateX(-200%); }
+    75% { transform: translateX(-300%); }
+    95% { transform: translateX(-300%); }
+    100% { transform: translateX(0%); }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h2>Hotel Checkout</h2>
+
+  <div class="form-row">
+    <div class="form-group">
+      <label>Transaction ID</label>
+      <input type="text" id="txtTransID" readonly>
+    </div>
+    <div class="form-group">
+      <label>Guest Name</label>
+      <input type="text" id="txtGuestName" readonly>
+    </div>
+    <div class="form-group">
+      <label>Room Number</label>
+      <input type="text" id="txtRoomNumber" placeholder="Select Room">
+    </div>
+    <div class="form-group">
+      <label>Room Type</label>
+      <input type="text" id="txtRoomType" readonly>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group">
+      <label>Check-In Date</label>
+      <input type="date" id="txtCheckin" readonly>
+    </div>
+    <div class="form-group">
+      <label>Check-Out Date</label>
+      <input type="date" id="txtCheckout" readonly>
+    </div>
+    <div class="form-group">
+      <label>No. of Adults</label>
+      <input type="number" id="txtAdult" readonly>
+    </div>
+    <div class="form-group">
+      <label>No. of Children</label>
+      <input type="number" id="txtChildren" readonly>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group">
+      <label>Advance Payment (Php)</label>
+      <input type="number" id="txtAdvance" readonly>
+    </div>
+    <div class="form-group">
+      <label>Discount Type</label>
+      <input type="text" id="txtDiscountType" readonly>
+    </div>
+    <div class="form-group">
+      <label>Subtotal (Php)</label>
+      <input type="text" id="txtSubTotal" readonly>
+    </div>
+    <div class="form-group">
+      <label>Total (Php)</label>
+      <input type="text" id="txtTotal" readonly>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group">
+      <label>Cash (Php)</label>
+      <input type="number" id="txtCash" min="0" step="0.01">
+    </div>
+    <div class="form-group">
+      <label>Change (Php)</label>
+      <input type="text" id="txtChange" readonly>
+    </div>
+  </div>
+
+  <div class="buttons">
+    <button class="btn-checkout" id="bttnCheckout">Checkout</button>
+    <button class="btn-clear" id="bttnClear">Clear</button>
+    <button class="btn-print" id="bttnPrint">Print Receipt</button>
+  </div>
+</div>
+
+<div class="buttons">
+  <button class="btn-logout" onclick="logout()">Log Out</button>
+</div>
+
+<!-- Crypto Ads Section -->
+<div class="crypto-ads-container">
+  <div class="crypto-ads-slider">
+    <div class="crypto-ad">🚀 Bitcoin - Trade Now</div>
+    <div class="crypto-ad">🔥 Ethereum - Invest Smart</div>
+    <div class="crypto-ad">🌐 Solana - Fast & Secure</div>
+    <div class="crypto-ad">💎 Cardano - Future of Finance</div>
+    <div class="crypto-ad">📈 Polkadot - Stake & Earn</div>
+  </div>
+</div>
+
+<script>
+function logout(){
+    localStorage.clear();
+    window.location.href = "index.html";
+}
+
+// Sample transactions
+let transactions = [
+  {
+    transID: 'TransID - 0001',
+    guestName: 'John Doe',
+    roomNumber: '101',
+    roomType: 'Deluxe',
+    roomRate: 2500,
+    checkin: '2025-12-28',
+    checkout: '2025-12-30',
+    adults: 2,
+    children: 1,
+    advance: 2000,
+    discountType: 'Promo',
+    subtotal: 5000,
+    total: 3000
+  }
+];
+
+const txtTransID = document.getElementById('txtTransID');
+const txtGuestName = document.getElementById('txtGuestName');
+const txtRoomNumber = document.getElementById('txtRoomNumber');
+const txtRoomType = document.getElementById('txtRoomType');
+const txtCheckin = document.getElementById('txtCheckin');
+const txtCheckout = document.getElementById('txtCheckout');
+const txtAdult = document.getElementById('txtAdult');
+const txtChildren = document.getElementById('txtChildren');
+const txtAdvance = document.getElementById('txtAdvance');
+const txtDiscountType = document.getElementById('txtDiscountType');
+const txtSubTotal = document.getElementById('txtSubTotal');
+const txtTotal = document.getElementById('txtTotal');
+const txtCash = document.getElementById('txtCash');
+const txtChange = document.getElementById('txtChange');
+
+let currentTransaction = null;
+
+// Select transaction by room number
+txtRoomNumber.addEventListener('change', () => {
+  const room = txtRoomNumber.value;
+  currentTransaction = transactions.find(t => t.roomNumber === room);
+  if (currentTransaction){
+    txtTransID.value = currentTransaction.transID;
+    txtGuestName.value = currentTransaction.guestName;
+    txtRoomType.value = currentTransaction.roomType;
+    txtCheckin.value = currentTransaction.checkin;
+    txtCheckout.value = currentTransaction.checkout;
+    txtAdult.value = currentTransaction.adults;
+    txtChildren.value = currentTransaction.children;
+    txtAdvance.value = currentTransaction.advance;
+    txtDiscountType.value = currentTransaction.discountType;
+    txtSubTotal.value = currentTransaction.subtotal.toFixed(2);
+    txtTotal.value = currentTransaction.total.toFixed(2);
+    txtCash.value = '';
+    txtChange.value = '';
+  } else {
+    clearForm();
+  }
+});
+
+// Calculate change
+txtCash.addEventListener('input', () => {
+  const cash = parseFloat(txtCash.value) || 0;
+  const total = parseFloat(txtTotal.value) || 0;
+  txtChange.value = cash >= total ? (cash - total).toFixed(2) : '0.00';
+});
+
+// Checkout button
+document.getElementById('bttnCheckout').addEventListener('click', () => {
+  if (!currentTransaction) { alert('Please select a transaction!'); return; }
+  const cash = parseFloat(txtCash.value) || 0;
+  const total = parseFloat(txtTotal.value);
+  if (cash < total){ alert('Insufficient cash!'); return; }
+  alert('Guest Checked out!');
+  currentTransaction = null;
+  clearForm();
+});
+
+// Clear button
+document.getElementById('bttnClear').addEventListener('click', clearForm);
+
+// Print receipt
+document.getElementById('bttnPrint').addEventListener('click', () => {
+  if (!currentTransaction){ alert('No transaction to print!'); return; }
+  const receipt = `
+    HOTEL CASH RECEIPT\n
+    Transaction ID: ${txtTransID.value}
+    Guest Name: ${txtGuestName.value}
+    Room Number: ${txtRoomNumber.value}
+    Room Type: ${txtRoomType.value}
+    Check-In: ${txtCheckin.value}
+    Check-Out: ${txtCheckout.value}
+    Adults: ${txtAdult.value}, Children: ${txtChildren.value}
+    Subtotal: ${txtSubTotal.value} Php
+    Advance: ${txtAdvance.value} Php
+    Total: ${txtTotal.value} Php
+    Cash: ${txtCash.value} Php
+    Change: ${txtChange.value} Php
+    Thank you for staying with us!
+  `;
+  const printWindow = window.open('', 'Print', 'height=600,width=400');
+  printWindow.document.write('<pre>' + receipt + '</pre>');
+  printWindow.document.close();
+  printWindow.print();
+});
+
+// Clear form function
+function clearForm(){
+  txtTransID.value = '';
+  txtGuestName.value = '';
+  txtRoomNumber.value = '';
+  txtRoomType.value = '';
+  txtCheckin.value = '';
+  txtCheckout.value = '';
+  txtAdult.value = '';
+  txtChildren.value = '';
+  txtAdvance.value = '';
+  txtDiscountType.value = '';
+  txtSubTotal.value = '';
+  txtTotal.value = '';
+  txtCash.value = '';
+  txtChange.value = '';
+}
+</script>
+</body>
+</html>

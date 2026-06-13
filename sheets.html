@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Payroll Records</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f6f9;
+    margin: 0;
+}
+
+.navbar {
+    background: #0f2027;
+    color: white;
+    padding: 15px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 20px auto;
+    background: white;
+    padding: 25px;
+    border-radius: 8px;
+}
+
+button {
+    padding: 10px 15px;
+    background: #0a7cff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-bottom: 15px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: center;
+}
+
+th {
+    background: #0f2027;
+    color: white;
+}
+</style>
+</head>
+
+<body>
+
+<div class="navbar">
+    <div>📊 Payroll Records</div>
+    <a href="accountant.html">← Back</a>
+</div>
+
+<div class="container">
+    <button onclick="openGoogleSheet()">Open Google Sheet</button>
+
+    <table id="sheetTable"></table>
+</div>
+
+<script>
+const SHEET_API_URL = "https://script.google.com/macros/s/AKfycbz-q6bO45-kwM0bhwt8jRbtqE7XnM2OXAIp6IH_LGED2o4LZaQMZdlyCrgb_zpx8DC6LQ/exec";
+const GOOGLE_SHEET_URL = "https://docs.google.com/spreadsheets/d/1wyUpWvArdNJnbw_8Yhqv7-QSYAuH5XxK5bjKGJ6dR_M/edit?gid=0#gid=0";
+
+function openGoogleSheet() {
+    window.open(GOOGLE_SHEET_URL, "_blank");
+}
+
+function loadFromSheets() {
+    fetch(SHEET_API_URL)
+    .then(res => res.json())
+    .then(data => {
+        let table = "<tr>";
+        data[0].forEach(h => table += `<th>${h}</th>`);
+        table += "</tr>";
+
+        for (let i = 1; i < data.length; i++) {
+            table += "<tr>";
+            data[i].forEach(cell => table += `<td>${cell}</td>`);
+            table += "</tr>";
+        }
+
+        document.getElementById("sheetTable").innerHTML = table;
+    })
+    .catch(err => {
+        document.getElementById("sheetTable").innerHTML =
+            "<tr><td>Error loading data</td></tr>";
+        console.error(err);
+    });
+}
+
+window.onload = loadFromSheets;
+</script>
+
+</body>
+</html>

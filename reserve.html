@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Reservation</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{font-family:Arial;background:#1c2833;color:#fff;margin:0}
+.dashboard{max-width:900px;margin:40px auto;
+background:rgba(30,45,60,.95);padding:30px;border-radius:18px}
+h2{text-align:center}
+.field{display:flex;gap:10px;align-items:center;margin-bottom:10px}
+.field label{width:120px}
+.field input,.field select{flex:1;padding:6px;border-radius:6px;border:none}
+.actions{text-align:center;margin-top:20px}
+button{padding:10px 20px;border-radius:8px;border:none;font-weight:bold;cursor:pointer}
+.save{background:#00c7ff;color:#fff}
+.cancel{background:#ff6b6b;color:#fff}
+.spin-btn{padding:5px}
+</style>
+</head>
+
+<body>
+<div class="dashboard">
+<h2>Reservation Form</h2>
+
+<div class="field">
+<label>Transaction ID</label>
+<input id="txtTransID" readonly>
+</div>
+
+<div class="field">
+<label>Guest</label>
+<input id="txtGuestName" readonly>
+<button onclick="searchGuest()">...</button>
+</div>
+
+<div class="field">
+<label>Room</label>
+<input id="txtRoomNumber" readonly>
+<button onclick="searchRoom()">...</button>
+</div>
+
+<div class="field">
+<label>Room Type</label>
+<input id="txtRoomType" readonly>
+</div>
+
+<div class="field">
+<label>Rate</label>
+<input id="txtRoomRate" readonly>
+</div>
+
+<div class="field">
+<label>Check In</label>
+<input type="date" id="dtCheckInDate" onchange="calcDays()">
+</div>
+
+<div class="field">
+<label>Check Out</label>
+<input type="date" id="dtCheckOutDate" onchange="calcDays()">
+</div>
+
+<div class="field">
+<label>Days</label>
+<input id="txtDaysNumber" readonly>
+</div>
+
+<div class="field">
+<label>Discount</label>
+<input id="txtDiscount" readonly>
+</div>
+
+<div class="field">
+<label>Subtotal</label>
+<input id="txtSubTotal" readonly>
+</div>
+
+<div class="field">
+<label>Advance</label>
+<input id="txtAdvance" oninput="calculateTotal()">
+</div>
+
+<div class="field">
+<label>Total</label>
+<input id="txtTotal" readonly>
+</div>
+
+<div class="actions">
+<button class="save" onclick="reserve()">Reserve</button>
+<button class="cancel" onclick="cancelReserve()">Cancel</button>
+</div>
+</div>
+
+<script>
+const room = JSON.parse(localStorage.getItem("selectedRoom"));
+const guest = JSON.parse(localStorage.getItem("currentGuest"));
+const discount = JSON.parse(localStorage.getItem("selectedDiscount"));
+
+function init(){
+ document.getElementById("txtTransID").value =
+  "TRANS-"+Math.floor(Math.random()*9000+1000);
+
+ if(room){
+  txtRoomNumber.value = room.number;
+  txtRoomType.value = room.type;
+  txtRoomRate.value = room.rate;
+ }
+ if(guest){
+  txtGuestName.value = guest.first+" "+guest.last;
+ }
+ if(discount){
+  txtDiscount.value = discount.type+" ("+(discount.rate*100)+"%)";
+ }
+}
+init();
+
+function searchGuest(){
+ if(!guest){alert("No guest found");return;}
+ alert("Guest loaded from guest.html");
+}
+
+function searchRoom(){
+ if(!room){alert("No room selected");return;}
+ alert("Room loaded from room.html");
+}
+
+function calcDays(){
+ let inDate=new Date(dtCheckInDate.value);
+ let outDate=new Date(dtCheckOutDate.value);
+ if(outDate>inDate){
+  let days=(outDate-inDate)/(1000*3600*24);
+  txtDaysNumber.value=days;
+  calculateTotal();
+ }
+}
+
+function calculateTotal(){
+ let days=parseInt(txtDaysNumber.value)||1;
+ let rate=parseFloat(txtRoomRate.value)||0;
+ let subtotal=days*rate;
+
+ if(discount) subtotal-=subtotal*discount.rate;
+ txtSubTotal.value=subtotal.toFixed(2);
+
+ let adv=parseFloat(txtAdvance.value)||0;
+ txtTotal.value=(subtotal-adv).toFixed(2);
+}
+
+function reserve(){
+ if(!guest||!room){alert("Missing guest or room");return;}
+
+ const reservation={
+  transID:txtTransID.value,
+  guest,room,discount,
+  checkIn:dtCheckInDate.value,
+  checkOut:dtCheckOutDate.value,
+  days:txtDaysNumber.value,
+  total:txtTotal.value
+ };
+
+ localStorage.setItem("reservation",JSON.stringify(reservation));
+ window.location.href="check_in_form.html";
+}
+
+function cancelReserve(){
+ window.location.href="discount.html";
+}
+</script>
+</body>
+</html>

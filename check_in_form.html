@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Guest Check-In</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{
+ font-family:'Segoe UI',Tahoma;
+ background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+ color:#fff;margin:0;padding:0
+}
+.container{
+ max-width:900px;margin:40px auto;
+ background:rgba(30,45,60,.95);
+ padding:30px;border-radius:18px
+}
+h2{text-align:center;margin-bottom:20px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.field{margin-bottom:12px}
+label{display:block;font-size:14px;margin-bottom:5px}
+input{width:100%;padding:8px;border-radius:6px;border:none}
+.actions{text-align:center;margin-top:25px}
+button{
+ padding:10px 25px;border-radius:10px;
+ border:none;cursor:pointer;font-weight:bold;margin:5px
+}
+.save{background:#00c7ff}
+.cancel{background:#ff6b6b}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+<h2>Guest Check-In</h2>
+
+<div class="grid">
+
+<!-- GUEST -->
+<div>
+<h3>Guest Info</h3>
+<div class="field"><label>Name</label><input id="guestName" readonly></div>
+<div class="field"><label>Contact</label><input id="guestContact" readonly></div>
+<div class="field"><label>Email</label><input id="guestEmail" readonly></div>
+</div>
+
+<!-- ROOM -->
+<div>
+<h3>Room Info</h3>
+<div class="field"><label>Room Number</label><input id="roomNumber" readonly></div>
+<div class="field"><label>Room Type</label><input id="roomType" readonly></div>
+<div class="field"><label>Rate (KES)</label><input id="roomRate" readonly></div>
+</div>
+
+</div>
+
+<hr>
+
+<div class="grid">
+
+<div>
+<h3>Stay Details</h3>
+<div class="field"><label>Check-In Date</label><input id="checkInDate" type="date"></div>
+<div class="field"><label>Check-Out Date</label><input id="checkOutDate" type="date"></div>
+<div class="field"><label>Number of Nights</label><input id="nights" readonly></div>
+</div>
+
+<div>
+<h3>Payment</h3>
+<div class="field"><label>Discount</label><input id="discountType" readonly></div>
+<div class="field"><label>Sub Total</label><input id="subTotal" readonly></div>
+<div class="field"><label>Total After Discount</label><input id="total" readonly></div>
+</div>
+
+</div>
+
+<div class="actions">
+<button class="save" onclick="confirmCheckIn()">Confirm Check-In</button>
+<button class="cancel" onclick="goBack()">Back</button>
+</div>
+
+</div>
+
+<script>
+const guest = JSON.parse(localStorage.getItem("currentGuest"));
+const room = JSON.parse(localStorage.getItem("selectedRoom"));
+const discount = JSON.parse(localStorage.getItem("selectedDiscount")) || {type:"None",rate:0};
+
+if(!guest || !room){
+ alert("Missing booking data"); 
+ window.location.href="room.html";
+}
+
+/* POPULATE */
+guestName.value = guest.first + " " + guest.last;
+guestContact.value = guest.contact || "";
+guestEmail.value = guest.email || "";
+
+roomNumber.value = room.number;
+roomType.value = room.type;
+roomRate.value = room.rate;
+
+discountType.value = discount.type;
+
+/* CALCULATE NIGHTS */
+checkOutDate.addEventListener("change",calculate);
+checkInDate.addEventListener("change",calculate);
+
+function calculate(){
+ if(!checkInDate.value || !checkOutDate.value) return;
+ const inD=new Date(checkInDate.value);
+ const outD=new Date(checkOutDate.value);
+ const days=Math.max(1,(outD-inD)/(1000*60*60*24));
+ nights.value=days;
+
+ const sub=days*room.rate;
+ subTotal.value=sub.toFixed(2);
+ total.value=(sub-(sub*discount.rate)).toFixed(2);
+}
+
+/* CONFIRM */
+function confirmCheckIn(){
+ if(!checkInDate.value||!checkOutDate.value){
+  alert("Select dates"); return;
+ }
+
+ const record={
+  guest,room,discount,
+  checkIn:checkInDate.value,
+  checkOut:checkOutDate.value,
+  total:total.value
+ };
+
+ localStorage.setItem("checkInRecord",JSON.stringify(record));
+
+ // increment loyalty
+ let visits = Number(localStorage.getItem("visits_"+guest.email))||0;
+ localStorage.setItem("visits_"+guest.email,visits+1);
+
+ window.location.href="check_out_form.html";
+}
+
+/* BACK */
+function goBack(){
+ window.location.href="reserve.html";
+}
+</script>
+
+</body>
+</html>

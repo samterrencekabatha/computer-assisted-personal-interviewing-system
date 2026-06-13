@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Hotel Services</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background: #f5f5f5;
+  margin: 0;
+}
+
+.navbar {
+  background: #111;
+  padding: 15px;
+}
+
+.navbar a {
+  color: white;
+  margin-right: 15px;
+  text-decoration: none;
+}
+
+.hero {
+  padding: 80px;
+  background: linear-gradient(to right,#000,#333);
+  color: white;
+  text-align: center;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+  gap: 20px;
+  padding: 40px;
+}
+
+.card {
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.card h3, .card p {
+  padding: 10px;
+}
+</style>
+<body>
+
+<h1>Our Professional Services</h1>
+
+<section class="grid">
+
+<div class="card">
+  <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b">
+  <h3>Housekeeping</h3>
+  <p>Daily room cleaning, laundry services, and hygiene excellence.</p>
+</div>
+
+<div class="card">
+  <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092">
+  <h3>Kitchen & Catering</h3>
+  <p>International cuisine prepared by professional chefs.</p>
+</div>
+
+<div class="card">
+  <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952">
+  <h3>Maintenance</h3>
+  <p>24/7 facility maintenance ensuring guest comfort.</p>
+</div>
+
+<div class="card">
+  <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427">
+  <h3>Security</h3>
+  <p>24-hour surveillance, trained guards, and guest safety systems.</p>
+</div>
+
+</section>
+
+</body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Room Management</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    background: linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+    color:#fff;
+    margin:0;
+    padding:20px;
+}
+h2{
+    text-align:center;
+    margin-bottom:20px;
+}
+.room-grid{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+    gap:20px;
+}
+.room-card{
+    background: rgba(30,45,60,.95);
+    padding:20px;
+    border-radius:16px;
+    box-shadow:0 0 12px rgba(0,0,0,.3);
+}
+.room-card h3{ margin:0 0 10px; }
+.room-card p{ margin:5px 0; font-size:14px; }
+
+button{
+    width:100%;
+    margin-top:10px;
+    padding:10px;
+    border:none;
+    border-radius:10px;
+    background:#00c7ff;
+    font-weight:bold;
+    cursor:pointer;
+}
+button:hover{ opacity:.9; }
+</style>
+</head>
+
+<body>
+
+<h2>🏨 Hotel Room Selection</h2>
+
+<div class="room-grid">
+
+  <div class="room-card">
+    <h3>Room 101 – Single Room</h3>
+    <p>Occupancy: 1 Guest</p>
+    <p>Bed: Single</p>
+    <p>Rate: KES 2,500</p>
+    <button onclick="selectRoom('101','Single Room',2500)">Select</button>
+  </div>
+
+  <div class="room-card">
+    <h3>Room 102 – Double Room</h3>
+    <p>Occupancy: 2 Guests</p>
+    <p>Bed: Double</p>
+    <p>Rate: KES 3,500</p>
+    <button onclick="selectRoom('102','Double Room',3500)">Select</button>
+  </div>
+
+  <div class="room-card">
+    <h3>Room 103 – Twin Room</h3>
+    <p>Occupancy: 2 Guests</p>
+    <p>Beds: Twin</p>
+    <p>Rate: KES 3,800</p>
+    <button onclick="selectRoom('103','Twin Room',3800)">Select</button>
+  </div>
+
+  <div class="room-card">
+    <h3>Room 201 – Queen Room</h3>
+    <p>Class: Deluxe</p>
+    <p>Rate: KES 4,500</p>
+    <button onclick="selectRoom('201','Queen Room',4500)">Select</button>
+  </div>
+
+  <div class="room-card">
+    <h3>Room 202 – King Room</h3>
+    <p>Class: Deluxe</p>
+    <p>Rate: KES 5,000</p>
+    <button onclick="selectRoom('202','King Room',5000)">Select</button>
+  </div>
+
+  <div class="room-card">
+    <h3>Room 301 – Junior Suite</h3>
+    <p>Class: Suite</p>
+    <p>Rate: KES 6,500</p>
+    <button onclick="selectRoom('301','Junior Suite',6500)">Select</button>
+  </div>
+
+  <div class="room-card">
+    <h3>Room 302 – Executive Suite</h3>
+    <p>Class: Suite</p>
+    <p>Rate: KES 8,000</p>
+    <button onclick="selectRoom('302','Executive Suite',8000)">Select</button>
+  </div>
+
+  <div class="room-card">
+    <h3>Room 401 – Family Room</h3>
+    <p>Occupancy: 4 Guests</p>
+    <p>Rate: KES 7,000</p>
+    <button onclick="selectRoom('401','Family Room',7000)">Select</button>
+  </div>
+
+  <div class="room-card">
+    <h3>Room 402 – Honeymoon Suite</h3>
+    <p>Class: Premium</p>
+    <p>Rate: KES 9,500</p>
+    <button onclick="selectRoom('402','Honeymoon Suite',9500)">Select</button>
+  </div>
+
+  <div class="room-card">
+    <h3>Room 501 – Presidential Suite</h3>
+    <p>Top Tier</p>
+    <p>Rate: KES 15,000</p>
+    <button onclick="selectRoom('501','Presidential Suite',15000)">Select</button>
+  </div>
+
+</div>
+
+<script>
+function selectRoom(number, type, rate){
+    const room = { number, type, rate };
+    localStorage.setItem("selectedRoom", JSON.stringify(room));
+    console.log("Room saved:", room);
+    window.location.href = "guest.html";
+}
+</script>
+
+</body>
+</html>

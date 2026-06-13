@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Discount Management</title>
+
+<style>
+body{
+ background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+ font-family:Arial;color:#fff;margin:0
+}
+.container{
+ max-width:750px;margin:50px auto;
+ background:rgba(40,60,70,.95);
+ padding:30px;border-radius:18px
+}
+h2{text-align:center}
+.form-row{display:grid;grid-template-columns:140px 1fr;gap:15px;margin-bottom:15px}
+input{padding:8px;border-radius:6px;border:none}
+.actions{text-align:center;margin:20px 0}
+button{padding:10px 25px;border-radius:10px;border:none;cursor:pointer}
+.save{background:#00c7ff}
+.cancel{background:#ff6b6b}
+table{width:100%;border-collapse:collapse;margin-top:20px}
+th,td{padding:10px;text-align:center}
+th{background:rgba(0,0,0,.3)}
+tr:hover{background:rgba(0,199,255,.2);cursor:pointer}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+<h2>Select Discount</h2>
+
+<div class="form-row">
+<label>Discount Type</label>
+<input id="txtType">
+</div>
+
+<div class="form-row">
+<label>Rate (%)</label>
+<input id="txtRate">
+</div>
+
+<div class="actions">
+<button class="save" onclick="saveDiscount()">Save</button>
+<button class="cancel" onclick="clearForm()">Cancel</button>
+</div>
+
+<table>
+<thead>
+<tr><th>ID</th><th>Type</th><th>Rate</th></tr>
+</thead>
+<tbody id="discountTable"></tbody>
+</table>
+
+<div class="actions">
+<button class="save" onclick="proceed()">Proceed to Reservation</button>
+</div>
+</div>
+
+<script>
+let discounts = JSON.parse(localStorage.getItem("discounts")) || [];
+let selectedDiscount = null;
+
+/* LOAD */
+window.onload = () => {
+ applyLoyaltyDiscount();
+ render();
+};
+
+/* SAVE DISCOUNT */
+function saveDiscount(){
+ if(!txtType.value || !txtRate.value){
+  alert("Fill all fields"); return;
+ }
+ discounts.push({
+  id: discounts.length+1,
+  type: txtType.value,
+  rate: parseFloat(txtRate.value)/100
+ });
+ localStorage.setItem("discounts",JSON.stringify(discounts));
+ clearForm(); render();
+}
+
+/* RENDER TABLE */
+function render(){
+ discountTable.innerHTML="";
+ discounts.forEach(d=>{
+  let r=document.createElement("tr");
+  r.innerHTML=`<td>${d.id}</td><td>${d.type}</td><td>${d.rate*100}%</td>`;
+  r.onclick=()=>select(d);
+  discountTable.appendChild(r);
+ });
+}
+
+/* SELECT */
+function select(d){
+ selectedDiscount=d;
+ localStorage.setItem("selectedDiscount",JSON.stringify(d));
+ alert("Selected: "+d.type);
+}
+
+/* CLEAR */
+function clearForm(){
+ txtType.value=""; txtRate.value="";
+}
+
+/* LOYALTY AUTO-DISCOUNT */
+function applyLoyaltyDiscount(){
+ const guest = JSON.parse(localStorage.getItem("currentGuest"));
+ if(!guest || !guest.email) return;
+
+ let visits = Number(localStorage.getItem("visits_"+guest.email))||0;
+ let loyalty = null;
+
+ if(visits>=5) loyalty={type:"VIP Loyalty",rate:0.20};
+ else if(visits>=3) loyalty={type:"Regular Loyalty",rate:0.10};
+
+ if(loyalty){
+  localStorage.setItem("selectedDiscount",JSON.stringify(loyalty));
+ }
+}
+
+/* PROCEED */
+function proceed(){
+ if(!localStorage.getItem("selectedDiscount")){
+  alert("Select a discount first"); return;
+ }
+ window.location.href="reserve.html";
+}
+</script>
+
+</body>
+</html>

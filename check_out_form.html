@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Guest Checkout</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{
+ font-family:'Segoe UI',Tahoma;
+ background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+ color:#fff;margin:0;padding:0
+}
+.container{
+ max-width:900px;margin:40px auto;
+ background:rgba(30,45,60,.95);
+ padding:30px;border-radius:18px
+}
+h2,h3{text-align:center;margin-bottom:20px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.field{margin-bottom:12px}
+label{display:block;font-size:14px;margin-bottom:5px}
+input{width:100%;padding:8px;border-radius:6px;border:none}
+.summary{
+ background:#111;padding:20px;border-radius:12px;margin-top:20px
+}
+.actions{text-align:center;margin-top:30px}
+button{
+ padding:10px 25px;border-radius:10px;
+ border:none;cursor:pointer;font-weight:bold;margin:5px
+}
+.logout{background:#ff6b6b}
+.print{background:#00c7ff}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+<h2>Guest Checkout</h2>
+
+<div class="grid">
+
+<!-- GUEST -->
+<div>
+<h3>Guest Information</h3>
+<div class="field"><label>Name</label><input id="guestName" readonly></div>
+<div class="field"><label>Email</label><input id="guestEmail" readonly></div>
+<div class="field"><label>Contact</label><input id="guestContact" readonly></div>
+</div>
+
+<!-- ROOM -->
+<div>
+<h3>Room Information</h3>
+<div class="field"><label>Room Number</label><input id="roomNumber" readonly></div>
+<div class="field"><label>Room Type</label><input id="roomType" readonly></div>
+<div class="field"><label>Rate (KES)</label><input id="roomRate" readonly></div>
+</div>
+
+</div>
+
+<div class="summary">
+<h3>Billing Summary</h3>
+<div class="field"><label>Nights Stayed</label><input id="nights" readonly></div>
+<div class="field"><label>Sub Total</label><input id="subTotal" readonly></div>
+<div class="field"><label>Discount</label><input id="discount" readonly></div>
+<div class="field"><label>Total Paid (KES)</label><input id="total" readonly></div>
+</div>
+
+<div class="actions">
+<button class="print" onclick="printSlip()">Print Payslip</button>
+<button class="logout" onclick="logout()">Log Out</button>
+</div>
+
+</div>
+
+<script>
+const record = JSON.parse(localStorage.getItem("checkInRecord"));
+
+if(!record){
+ alert("No checkout data found!");
+ window.location.href="index.html";
+}
+
+/* POPULATE */
+guestName.value = record.guest.first + " " + record.guest.last;
+guestEmail.value = record.guest.email || "";
+guestContact.value = record.guest.contact || "";
+
+roomNumber.value = record.room.number;
+roomType.value = record.room.type;
+roomRate.value = record.room.rate;
+
+const inD = new Date(record.checkIn);
+const outD = new Date(record.checkOut);
+const nightsStayed = Math.max(1,(outD-inD)/(1000*60*60*24));
+
+nights.value = nightsStayed;
+subTotal.value = (nightsStayed * record.room.rate).toFixed(2);
+discount.value = record.discount.type;
+total.value = record.total;
+
+/* PRINT */
+function printSlip(){
+ window.print();
+}
+
+/* LOGOUT & CLEAR */
+function logout(){
+ localStorage.clear();
+ window.location.href="index.html";
+}
+</script>
+
+</body>
+</html>

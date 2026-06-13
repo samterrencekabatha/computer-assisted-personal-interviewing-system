@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<!-- saved from url=(0044)file:///C:/Users/PC/Downloads/frontpage.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>Luxury Hotel | Live • Work • Play</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+    font-family:'Segoe UI',Tahoma,sans-serif;
+    color:#333;
+    line-height:1.6;
+}
+
+/* NAVBAR */
+.navbar{
+    position:fixed;
+    top:0;
+    width:100%;
+    background:rgba(0,0,0,.75);
+    padding:15px 40px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    z-index:1000;
+}
+.navbar .logo{
+    color:#fff;
+    font-size:22px;
+    font-weight:700;
+    letter-spacing:1px;
+}
+.navbar a{
+    color:#fff;
+    margin-left:25px;
+    text-decoration:none;
+    font-weight:500;
+}
+.navbar a:hover{color:#d4af37}
+.book-btn{
+    background:#0a5ed7;
+    padding:10px 18px;
+    border-radius:25px;
+}
+
+/* HERO */
+.hero{
+    height:100vh;
+    background:
+        linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.45)),
+        url('https://images.unsplash.com/photo-1501117716987-c8e1ecb210b0') center/cover no-repeat;
+    display:flex;
+    align-items:center;
+    padding:0 60px;
+}
+.hero-content{
+    max-width:600px;
+    color:#fff;
+}
+.hero h1{
+    font-size:52px;
+    margin-bottom:15px;
+}
+.hero h1 span{color:#d4af37}
+.hero p{
+    font-size:18px;
+    margin-bottom:30px;
+}
+.hero button{
+    padding:14px 30px;
+    border:none;
+    border-radius:30px;
+    background:#d4af37;
+    font-size:16px;
+    cursor:pointer;
+}
+.hero button:hover{background:#c39b2f}
+
+/* SECTION */
+.section{
+    padding:80px 60px;
+}
+.section-title{
+    text-align:center;
+    margin-bottom:50px;
+}
+.section-title h2{
+    font-size:36px;
+    color:#0f2027;
+}
+.section-title p{
+    color:#666;
+}
+
+/* ROOMS */
+.rooms{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:30px;
+}
+.room-card{
+    border-radius:18px;
+    overflow:hidden;
+    box-shadow:0 10px 25px rgba(0,0,0,.12);
+}
+.room-card img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+}
+.room-card .info{
+    padding:20px;
+}
+.room-card h3{margin-bottom:8px}
+.room-card p{font-size:14px;color:#666}
+.room-card span{
+    display:block;
+    margin-top:10px;
+    font-weight:700;
+    color:#0a5ed7;
+}
+
+/* EXPERIENCE */
+.experience{
+    background:#f7f9fc;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:50px;
+    align-items:center;
+}
+.experience img{
+    width:100%;
+    border-radius:20px;
+}
+.experience h2{margin-bottom:15px}
+.experience ul{margin-top:15px}
+.experience li{margin-bottom:8px}
+
+/* CTA */
+.cta{
+    background:linear-gradient(135deg,#0f2027,#203a43);
+    color:#fff;
+    text-align:center;
+    padding:70px 30px;
+}
+.cta h2{font-size:38px;margin-bottom:15px}
+.cta button{
+    margin-top:20px;
+    padding:14px 34px;
+    background:#d4af37;
+    border:none;
+    border-radius:30px;
+    font-size:16px;
+    cursor:pointer;
+}
+
+/* FOOTER */
+footer{
+    background:#0b1a22;
+    color:#aaa;
+    padding:40px;
+    text-align:center;
+}
+footer p{font-size:14px}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+    .hero h1{font-size:38px}
+    .experience{grid-template-columns:1fr}
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAV -->
+<div class="navbar">
+    <div class="logo">LUXURIO HOTEL</div>
+    <div>
+        <a href="file:///C:/Users/PC/Downloads/projct.g/index.html">Home</a>
+  <a href="file:///C:/Users/PC/Downloads/projct.g/about.html">About Hotel</a>
+  <a href="file:///C:/Users/PC/Downloads/projct.g/services.html">Services</a>
+  <a href="file:///C:/Users/PC/Downloads/projct.g/rooms.html">Rooms &amp; Dining</a>
+  <a href="file:///C:/Users/PC/Downloads/projct.g/contact.html">Contact</a>
+   </div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-content">
+        <h1>Get Everything &amp; More to <span>Live • Work • Play</span></h1>
+        <p>
+            A luxurious boutique hotel offering modern elegance, exceptional service,
+            and a perfect balance of comfort and productivity for business and leisure travelers.
+        </p>
+        <div>
+           <button onclick="openRoomsPage()">Check Availability</button>
+        </div>
+              
+    </div>
+<script>
+  function openRoomsPage() {
+       window.location.href = "rooms.html";
+}
+  function openRoomPage() {
+       window.location.href="rooms.html";
+}
+</script>
+
+</section>
+
+<!-- ROOMS -->
+<section class="section">
+    <div class="section-title">
+        <h2>Rooms &amp; Suites</h2>
+        <p>Designed for comfort, privacy and elegance</p>
+    </div>
+
+    <div class="rooms">
+        <div class="room-card">
+            <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85">
+            <div class="info">
+                <h3>Standard Room</h3>
+                <p>Perfect for solo and business travelers</p>
+                <span>From KES 3,500 / Night</span>
+            </div>
+        </div>
+
+        <div class="room-card">
+            <img src="https://images.unsplash.com/photo-1505691938895-1758d7feb511">
+            <div class="info">
+                <h3>Deluxe Room</h3>
+                <p>Spacious luxury with city views</p>
+                <span>From KES 5,000 / Night</span>
+            </div>
+        </div>
+
+        <div class="room-card">
+            <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945">
+            <div class="info">
+                <h3>Executive Suite</h3>
+                <p>Premium comfort for executives</p>
+                <span>From KES 8,000 / Night</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="section experience">
+    <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb">
+    <div>
+        <h2>Exceptional Experience</h2>
+        <p>
+            From elegant dining to modern meeting spaces, we provide everything
+            you need for a productive and relaxing stay.
+        </p>
+        <ul>
+            <li>✔ Conference &amp; Meeting Rooms</li>
+            <li>✔ Fine Dining &amp; Lounge</li>
+            <li>✔ High-Speed Wi-Fi</li>
+            <li>✔ 24/7 Concierge Services</li>
+        </ul>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+    <h2>Plan Your Stay With Us</h2>
+    <p>Experience luxury, comfort and convenience in one place</p>
+    <div><button onclick="openRoomsPage()">Book Your Stay</button></div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <p>© Copyright ICT Department 2026 • All Rights Reserved</p>
+</footer>
+
+
+
+</body></html>

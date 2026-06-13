@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guest Booking 2025</title>
+
+<style>
+body{
+    font-family:'Segoe UI',Tahoma,sans-serif;
+    background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+    color:#fff;margin:0;padding:0;
+}
+.dashboard{
+    max-width:900px;margin:40px auto;
+    background:rgba(30,45,60,.95);
+    padding:30px;border-radius:18px;
+}
+h2,h3{text-align:center;margin-bottom:20px;}
+.form-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+    gap:15px;margin-bottom:20px;
+}
+input,select{
+    padding:10px;border-radius:8px;border:none;
+}
+button{
+    padding:12px 25px;border-radius:10px;
+    border:none;cursor:pointer;font-weight:bold;
+    margin:5px;
+}
+.save{background:#00c7ff;color:#fff;}
+.cancel{background:#ff6b6b;color:#fff;}
+.back{background:#ffc107;color:#000;}
+table{width:100%;margin-top:20px;border-collapse:collapse;}
+th,td{padding:10px;text-align:center;}
+th{background:rgba(0,0,0,.3);}
+tr:hover{background:rgba(0,199,255,.2);}
+</style>
+</head>
+
+<body>
+
+<div class="dashboard">
+<h2>Register Guest</h2>
+
+<div class="form-grid">
+<input id="txtFName" placeholder="First Name">
+<input id="txtMName" placeholder="Middle Name">
+<input id="txtLName" placeholder="Last Name">
+<input id="txtAddress" placeholder="Address">
+<input id="txtNumber" placeholder="Contact Number">
+<input id="txtEmail" placeholder="Email (optional)">
+
+<select id="cboGender">
+<option value="">Select Gender</option>
+<option>Male</option>
+<option>Female</option>
+<option>Other</option>
+</select>
+</div>
+
+<button class="save" onclick="saveGuest()">Continue</button>
+<button class="back" onclick="goBack()">Back to Rooms</button>
+<button class="cancel" onclick="cancelBooking()">Cancel Booking</button>
+
+<hr>
+<h3>Selected Room</h3>
+
+<div class="form-grid">
+<input id="roomNumber" readonly>
+<input id="roomType" readonly>
+<input id="roomRate" readonly>
+</div>
+
+<hr>
+<h3>Guest List</h3>
+
+<table>
+<thead>
+<tr>
+<th>#</th><th>Name</th><th>Contact</th><th>Status</th>
+</tr>
+</thead>
+<tbody id="guestTable"></tbody>
+</table>
+</div>
+
+<script>
+let guests = JSON.parse(localStorage.getItem("guests")) || [];
+
+// SAVE GUEST
+function saveGuest(){
+    if(!txtFName.value || !txtLName.value || !txtNumber.value){
+        alert("Please fill required fields");
+        return;
+    }
+
+    const guest = {
+        first: txtFName.value,
+        middle: txtMName.value,
+        last: txtLName.value,
+        address: txtAddress.value,
+        contact: txtNumber.value,
+        email: txtEmail.value,
+        gender: cboGender.value,
+        status: "Active",
+        date: new Date().toLocaleDateString()
+    };
+
+    guests.push(guest);
+    localStorage.setItem("guests", JSON.stringify(guests));
+    localStorage.setItem("currentGuest", JSON.stringify(guest));
+
+    window.location.href = "discount.html";
+}
+
+// BACK TO ROOMS
+function goBack(){
+    window.location.href = "room.html";
+}
+
+// CANCEL BOOKING
+function cancelBooking(){
+    if(confirm("Cancel booking and clear data?")){
+        localStorage.removeItem("selectedRoom");
+        localStorage.removeItem("currentGuest");
+        window.location.href = "index.html";
+    }
+}
+
+// LOAD ROOM
+function loadRoom(){
+    const room = JSON.parse(localStorage.getItem("selectedRoom"));
+    if(!room){ alert("No room selected"); goBack(); }
+    roomNumber.value = room.number;
+    roomType.value = room.type;
+    roomRate.value = "KES " + room.rate;
+}
+
+// RENDER TABLE
+function renderGuests(){
+    guestTable.innerHTML="";
+    guests.forEach((g,i)=>{
+        guestTable.innerHTML+=`
+        <tr>
+          <td>${i+1}</td>
+          <td>${g.first} ${g.last}</td>
+          <td>${g.contact}</td>
+          <td>${g.status}</td>
+        </tr>`;
+    });
+}
+
+loadRoom();
+renderGuests();
+</script>
+
+</body>
+</html>
